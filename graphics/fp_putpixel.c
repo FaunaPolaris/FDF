@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_graphical_end.c                                 :+:      :+:    :+:   */
+/*   fp_putpixel.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/07 13:26:23 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/08/08 19:08:44 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/08/08 18:49:51 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/08/08 19:35:46 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "graphlib.h"
 
-void	fp_graphical_end(t_mlx *data)
+void	fp_pixelput(t_mlx *data, int x, int y, int color)
 {
-	mlx_destroy_image(data->mlx, data->img->img);
-	mlx_destroy_window(data->mlx, data->window);
-	mlx_destroy_display(data->mlx);
-		free(data->mlx);
+	char	*position;
+
+	position = data->img->addr + (y * data->img->line
+			+ (x * data->img->bits / 8));
+	*(unsigned int *)position  = color;
 }

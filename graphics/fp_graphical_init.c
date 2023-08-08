@@ -6,22 +6,27 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:00:36 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/08/07 19:13:15 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/08/08 19:12:48 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "graphlib.h"
 
-t_mlx	*fp_graphical_init(char *title)
+int	fp_graphical_init(char *title, t_mlx *mlx_data)
 {
-	t_mlx	*mlx_data;
+	t_img_data	*img_data;
 
-	mlx_data = (t_mlx *)malloc(sizeof(t_mlx));
+	img_data = (t_img_data *)malloc(sizeof(t_img_data));
 	mlx_data->mlx = mlx_init();
 	if (!mlx_data->mlx)
-		return (mlx_data);
+		return (1);
 	mlx_data->window = mlx_new_window(mlx_data->mlx, WIDTH, HEIGHT, title);
 	if (!mlx_data->window)
-		return (mlx_data);
-	return (mlx_data);
+		return (1);
+	img_data->img = mlx_new_image(mlx_data->mlx, WIDTH, HEIGHT);
+	img_data->addr = mlx_get_data_addr(
+				img_data->img,&img_data->bits,
+				&img_data->line, &img_data->endian);
+	mlx_data->img = img_data;
+	return (0);
 }
