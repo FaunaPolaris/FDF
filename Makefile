@@ -23,6 +23,9 @@ all: $(NAME)
 
 $(NAME): mlx_test formulas
 	@echo
+	@printf "%20s\n" "-----------"
+	@printf "%25s\n" "FDF by: Fauna Polaris"
+	@printf "%20s\n" "-----------"
 
 mlx_test:
 	@$(CC) $(C_FLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_MLX) -o $@ $(MLX_LINK) $(MATH_LINK)
@@ -32,17 +35,22 @@ formulas:
 	@$(CC) $(C_GLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_FORM) -o $@ $(MLX_LINK) $(MATH_LINK)
 	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "formulas" "Compiled"
 	@echo
-	@printf "%s:$(ANSI)$(MAGENTA)m%10s$(ANSI)m\n" "B" "butterfly_curve"
+	@printf "%s: $(ANSI)$(MAGENTA)m%.15s$(ANSI)m" " B" "butterfly_curve"
+	@printf "%s: $(ANSI)$(MAGENTA)m%.15s$(ANSI)m" "| B" "butterfly_curve"
+	@echo
 
 clean:
+	@echo
 	@rm -rf $(OBJS_DIR)
-	@printf "%-30s$(ANSI)$(CYAN)m%s;$(ANSI)m\n" "Objs directory:" "Removed"
+	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "Objects" "Cleaned"
 
 fclean: clean
 	@rm -rf $(NAME)
-	@printf "%-30s$(ANSI)$(CYAN)m%s;$(ANSI)m\n" "Program:" "Removed"
+	@rm -rf formulas
+	@rm -rf mlx_test
+	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "Executables" "Cleaned"
+	@echo
 
 re: fclean all
-	@printf "$(ANSI)$(MAGENTA)m%-30s$(ANSI)m\n" "Starting recompilation"
 
 .PHONY: all mlx_test formulas clean fclean re

@@ -1,7 +1,10 @@
 # FDF
 Version history
+- 0.1.4 (True butterfly)  
+	- inverted the Y for the formula of the butterfly;  
+	- Corrected order of operations in formula;  
 - 0.1.3 (The butterfly effect)  
-	-new functions:  
+	- new functions:  
 		/graphics  
 		- fp_find_center;  
 		- fp_butterfly;
