@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_putpixel.c                                      :+:      :+:    :+:   */
+/*   fp_find_center.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/08 18:49:51 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/08/09 09:33:58 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/08/09 08:55:53 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/08/09 09:36:29 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libgraph.h"
 
-void	fp_putpixel(t_mlx *data, int x, int y, int color)
+t_vector	fp_find_center(void)
 {
-	char	*position;
+	t_vector	output;
 
-	position = data->img->addr + (y * data->img->line
-			+ (x * data->img->bits / 8));
-	*(unsigned int *)position  = color;
+	output.x = WIDTH / 2;
+	output.y = HEIGHT / 2;
+	return(output);
 }

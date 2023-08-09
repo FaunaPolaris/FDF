@@ -6,11 +6,11 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:00:36 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/08/08 19:12:48 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/08/09 09:27:42 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "graphlib.h"
+#include "libgraph.h"
 
 int	fp_graphical_init(char *title, t_mlx *mlx_data)
 {

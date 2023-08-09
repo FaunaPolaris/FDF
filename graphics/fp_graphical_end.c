@@ -6,11 +6,11 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:26:23 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/08/08 19:08:44 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/08/09 09:27:30 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "graphlib.h"
+#include "libgraph.h"
 
 void	fp_graphical_end(t_mlx *data)
 {
