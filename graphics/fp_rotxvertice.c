@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_find_center.c                                   :+:      :+:    :+:   */
+/*   fp_rotxvertice.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/09 08:55:53 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/08/15 12:06:09 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/08/15 16:07:23 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/08/15 16:20:42 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libgraph.h"
 
-t_vector	fp_find_center(void)
+void	fp_rotxvertice(t_vector *vertice, int quantity, double angle)
 {
-	t_vector	output;
+	int	i;
 
-	output.x = WIDTH / 2;
-	output.y = HEIGHT / 2;
-	output.z = 1;
-	return(output);
+	i = 0;
+	while (i < quantity)
+	{
+		vertice[i].y = (vertice[i].y * cos(angle))
+				- (vertice[i].z * sin(angle));
+		vertice[i].z = (vertice[i].y * sin(angle))
+				+ (vertice[i].z * cos(angle));
+		i++;
+	}
 }

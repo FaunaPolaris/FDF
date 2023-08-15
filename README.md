@@ -1,5 +1,11 @@
 # FDF
 Version history
+- 0.1.5 (The Cube);
+	- new functions:  
+		/graphics  
+		- fp_putvector;  
+		- fp_rect;  
+		- fp_rotxvector;  
 - 0.1.4 (True butterfly)  
 	- inverted the Y for the formula of the butterfly;  
 	- Corrected order of operations in formula;  

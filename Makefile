@@ -6,7 +6,8 @@ MLX_LINK	=	-lXext -lX11 -lmlx -L minilibx/
 MATH_LINK	=	-lm
 
 SRCS_GRAPH	=	fp_graphical_init.c fp_graphical_end.c fp_putpixel.c
-SRCS_GRAPH	+=	fp_butterfly.c fp_find_center.c
+SRCS_GRAPH	+=	fp_butterfly.c fp_find_center.c fp_rect.c fp_putvertice.c
+SRCS_GRAPH	+=	fp_rotxvertice.c
 
 SRCS_ALL	=	$(addprefix graphics/,$(SRCS_GRAPH))
 
@@ -18,10 +19,11 @@ CYAN		=	;36
 
 TMAIN_MLX	=	tests/mlx_test.c
 TMAIN_FORM	=	tests/formulas_test.c
+TMAIN_CUBE	=	tests/cube_test.c
 
-all: $(NAME)
+all: $(NAME) mlx_test cube formulas
 
-$(NAME): mlx_test formulas
+$(NAME):
 	@echo
 	@printf "%20s\n" "-----------"
 	@printf "%25s\n" "FDF by: Fauna Polaris"
@@ -39,6 +41,10 @@ formulas:
 	@printf "%s: $(ANSI)$(MAGENTA)m%.15s$(ANSI)m" "| B" "butterfly_curve"
 	@echo
 
+cube:
+	@$(CC) $(C_FLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_CUBE) -o $@ $(MLX_LINK) $(MATH_LINK)
+	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s$(ANSI)m\n" "Cube" "Compiled"
+
 clean:
 	@echo
 	@rm -rf $(OBJS_DIR)
@@ -53,4 +59,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all mlx_test formulas clean fclean re
+.PHONY: all mlx_test formulas cube clean fclean re
