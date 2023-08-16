@@ -3,17 +3,19 @@
 void	fp_putvertice(t_mlx *data, t_vector *vertice, int quantity, int color)
 {
 	int	i;
-	int	x_per;
-	int	y_per;
+	double	scale_x;
+	double	scale_y;
+	double	ratio;
 
+	ratio = (double)WIDTH / (double)HEIGHT;
+	scale_x = WIDTH * ratio / (vertice[2].x - vertice[0].x);
+	scale_y = HEIGHT * ratio / (vertice[2].y - vertice[0].y);
 	i = 0;
 	while (i < quantity)
 	{
-		x_per = vertice[i].x / vertice[i].z;
-		y_per = vertice[i].y / vertice[i].z;
-		fp_putpixel(data, (x_per + 1) * 0.5 * WIDTH,
-				((1 - y_per) * 0.5 * HEIGHT),
-				color);
+		fp_putpixel(data, scale_x * vertice[i].x + (WIDTH / 2),
+					scale_y * vertice[i].y + (HEIGHT / 2),
+					color);
 		i++;
 	}
 	mlx_put_image_to_window(data->mlx,

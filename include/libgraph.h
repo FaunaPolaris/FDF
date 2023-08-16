@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 12:42:48 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/08/15 16:36:48 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/08/16 12:50:12 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,10 @@ typedef struct s_mlx
 int	fp_graphical_init(char *title, t_mlx *data);
 void	fp_graphical_end(t_mlx *data);
 void	fp_putpixel(t_mlx *data, int x, int y, int color);
-void	fp_putvertice(t_mlx *data, t_vector *vertice, int quantity, int color);
+void	fp_putvertice(t_mlx *data, t_vector *vertx, int quantity, int color);
 t_vector	*fp_rect(int width, int height, int depth);
-void	fp_rotxvertice(t_vector *vertice, int quantity, double angle);
+void	fp_rotxvertice(t_vector *vertx, int quantity, double angle);
+void	fp_isometric(t_vector *vertx, int quantity);
 void	fp_butterfly(t_mlx *data, t_vector center);
 t_vector	fp_find_center(void);
 
