@@ -1,5 +1,9 @@
-# FDF
+# libgraph
 Version history
+- 0.1.6 (The Cube);  
+	- new functions:  
+		/graphics  
+		- fp_putline;  
 - 0.1.5 (The Cube);
 	- new functions:  
 		/graphics  

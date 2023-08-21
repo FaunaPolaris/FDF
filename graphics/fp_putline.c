@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_rotxvertice.c                                   :+:      :+:    :+:   */
+/*   fp_putline.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/15 16:07:23 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/08/21 10:23:05 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/08/21 08:06:13 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/08/21 08:49:36 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libgraph.h"
 
-void	fp_rotxvertice(t_vector *vertice, int quantity, double angle)
+void	fp_putline(t_mlx *data, t_vector point_a, t_vector point_b)
 {
-	int	i;
-	int	new_y;
-	int	new_z;
+	double	t;
+	int	x;
+	int	y;
 
-	i = 0;
-	while (i < quantity)
+	t = 0;
+	while (t <= 1)
 	{
-		new_y = (vertice[i].y * cos(angle))
-				- (vertice[i].z * sin(angle));
-		new_z = (vertice[i].y * sin(angle))
-				+ (vertice[i].z * cos(angle));
-		vertice[i].y = new_y;
-		vertice[i].z = new_z;
-		i++;
+		x = ((1 - t) * point_a.x + (t * point_b.x)) + WIDTH / 2;
+		y = ((1 - t) * point_a.y + (t * point_b.y)) + HEIGHT / 2;
+		fp_putpixel(data, x, y, 0xFF0000);
+		t += 0.008;
 	}
 }
+
+// P(t) = (1−t)⋅P1 + t⋅P2
