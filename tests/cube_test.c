@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	while (i < 50)
 	{
 		fp_putrect(&data, vertice);
-		fp_rotxvertice(vertice, 8, 1);
+//		fp_rotxvertice(vertice, 8, 1);
 		mlx_put_image_to_window(data.mlx, data.window, data.img->img, 0, 0);
 		usleep(500 * 1000);
 		fp_set_all(&data, 0x000000);

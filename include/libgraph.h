@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 12:42:48 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/08/21 10:18:54 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/08/23 17:36:15 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 #define LIBGRAPH_H
 
 # include <mlx.h>
-# include <stdlib.h>
 # include <math.h>
+#include "libft.h"
 
 # define WIDTH 1280
 # define HEIGHT 720
+# define SCALE 10
 
 typedef struct s_vector
 {

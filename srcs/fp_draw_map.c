@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_putpixel.c                                      :+:      :+:    :+:   */
+/*   fp_draw_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/08 18:49:51 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/08/23 17:39:04 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/08/23 16:54:20 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/08/23 17:08:55 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libgraph.h"
+#include "fdf.h"
 
-void	fp_putpixel(t_mlx *data, int x, int y, int color)
+void	fp_draw_map(t_mlx *data, t_map *map)
 {
-	char	*position;
+	t_map	*current;
 
-	if (x > WIDTH || y > HEIGHT)
-		return ;
-	if (x < 0 || y < 0)
-		return ;
-	position = data->img->addr + (y * data->img->line
-			+ (x * data->img->bits / 8));
-	*(unsigned int *)position  = color;
+	current = map->next;
+	while (current)
+	{
+		fp_isometric(&current->vertice, 1);
+		fp_putvertice(data, &current->vertice, 1, 0xFF00FF);
+		current = current->next;
+	}
 }

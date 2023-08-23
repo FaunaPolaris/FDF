@@ -1,9 +1,21 @@
 # libgraph
 Version history
+- 0.2.1 (map)  
+	- new library "fdf.h";  
+	- new functions:  
+		/src  
+		- fp_open_map;  
+		- fp_close_map;  
+		- fp_draw_map;  
+	- new structs:  
+		t_map;  
+- 0.1.7 (libft);  
+	- linked libft to Makefile;  
 - 0.1.6 (The Cube);  
 	- new functions:  
 		/graphics  
 		- fp_putline;  
+		- fp_set_all;  
 - 0.1.5 (The Cube);
 	- new functions:  
 		/graphics  

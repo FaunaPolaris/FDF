@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_putpixel.c                                      :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/08 18:49:51 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/08/23 17:39:04 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/08/23 13:53:56 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/08/23 17:21:20 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libgraph.h"
+#include "fdf.h"
+#include <stdio.h>
 
-void	fp_putpixel(t_mlx *data, int x, int y, int color)
+int	main(int argc, char **argv)
 {
-	char	*position;
+	int		fd;
+	t_mlx	data;
+	t_map	*map;
 
-	if (x > WIDTH || y > HEIGHT)
-		return ;
-	if (x < 0 || y < 0)
-		return ;
-	position = data->img->addr + (y * data->img->line
-			+ (x * data->img->bits / 8));
-	*(unsigned int *)position  = color;
+	map = NULL;
+	if (argc != 2)
+		return (1);
+	if (fp_graphical_init("fdf", &data))
+		return (1);
+	fd = open(argv[1], O_RDONLY);
+	map = fp_open_map(fd);
+	fp_draw_map(&data, map);
+	usleep(10000 * 500);
+	fp_close_map(map);
+	fp_graphical_end(&data);
+	close(fd);
 }

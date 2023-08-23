@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_putpixel.c                                      :+:      :+:    :+:   */
+/*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/08 18:49:51 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/08/23 17:39:04 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/08/21 10:44:00 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/08/23 17:20:46 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libgraph.h"
 
-void	fp_putpixel(t_mlx *data, int x, int y, int color)
+typedef struct s_map
 {
-	char	*position;
+	t_vector	vertice;
+	struct s_map	*next;
+}	t_map;
 
-	if (x > WIDTH || y > HEIGHT)
-		return ;
-	if (x < 0 || y < 0)
-		return ;
-	position = data->img->addr + (y * data->img->line
-			+ (x * data->img->bits / 8));
-	*(unsigned int *)position  = color;
-}
+t_map	*fp_open_map(int fd);
+void	fp_close_map(t_map *map);
+void	fp_draw_map(t_mlx *data, t_map *map);
