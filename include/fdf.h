@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 10:44:00 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/08/23 17:20:46 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/08/24 10:40:58 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 typedef struct s_map
 {
 	t_vector	vertice;
+	t_vector	isometric;
 	struct s_map	*next;
 }	t_map;
 

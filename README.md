@@ -1,5 +1,14 @@
 # libgraph
 Version history
+- 0.2.2 (map) 
+	- changed functions:  
+		/src  
+		- fp_open_map;  
+		- fp_draw_map;  
+		/graphics  
+		- fp_putline;  
+	-new MACROS:  
+		- SCALE;   
 - 0.2.1 (map)  
 	- new library "fdf.h";  
 	- new functions:  
@@ -48,5 +57,8 @@ Version history
 		/graphics  
 		- fp_graphical_init;  
 		- fp_graphical_end (leaking);  
-	-new headers:
+	- new headers:
 		- libgraph;  
+	- new MACROS:  
+		- WIDTH;  
+		- HEIGHT;  

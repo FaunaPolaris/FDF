@@ -6,13 +6,13 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 10:42:36 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/08/23 17:35:58 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/08/24 13:08:36 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int	fp_new_node(t_map *head, char *line, int y, int x)
+static int	fp_new_node(t_map *head, int x, int y, int z)
 {
 	t_map	*new;
 	t_map	*temp;
@@ -23,7 +23,7 @@ static int	fp_new_node(t_map *head, char *line, int y, int x)
 		return (1);
 	new->vertice.x = x * SCALE;
 	new->vertice.y = y * SCALE;
-	new->vertice.z = fp_atoi(line) * SCALE;
+	new->vertice.z = z * SCALE / 4;
 	while (temp->next)
 		temp = temp->next;
 	temp->next = new;
@@ -41,15 +41,13 @@ static char	**fp_get_array(int fd)
 	return (array);
 }
 
-t_map	*fp_open_map(int fd)
+static	int	fp_main_loop(int *y, int fd, t_map *map)
 {
-	t_map	*map;
-	int		y;
-	int		x;
+	int	x;
 	char	**array;
+	int	high_x;
 
-	y = 0;
-	map = (t_map *)fp_calloc(1, sizeof(t_map));
+	high_x = 0;
 	while (1)
 	{
 		array = fp_get_array(fd);
@@ -58,13 +56,39 @@ t_map	*fp_open_map(int fd)
 		x = 0;
 		while (array[x])
 		{
-			if (fp_new_node(map, array[x], y, x))
+			if (fp_new_node(map, x, y[0], fp_atoi(array[x])))
 				break ;
 			free(array[x]);
 			x++;
 		}
+		if (x > high_x)
+			high_x = x;
 		free(array);
-		y++;
+		y[0]++;
 	}
+	return (high_x);
+}
+
+t_map	*fp_open_map(int fd)
+{
+	t_map	*map;
+	t_map	*temp;
+	int		y;
+	int		x;
+
+	y = 0;
+	map = (t_map *)fp_calloc(1, sizeof(t_map));
+	x = fp_main_loop(&y, fd, map);
+	temp = map->next;
+	fp_new_node(map, -1, -1, 0);
+	while (temp->next->vertice.y >= 0)
+	{
+		temp->isometric = temp->vertice;
+		fp_printf("x: %i, y: %i %20s", (int)temp->vertice.x, (int)temp->vertice.y, "|");
+		fp_isometric(&temp->isometric, 1);
+		temp = temp->next;
+	}
+	map->vertice.x = x;
+	map->vertice.y = y;
 	return (map);
 }
