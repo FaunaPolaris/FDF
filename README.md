@@ -1,5 +1,20 @@
 # libgraph
 Version history
+- 0.3.1 (wireframe)  
+	- obsolete functions:  
+		/src -> obsolete  
+		- fp_open_map;  
+		- fp_draw_map;  
+		- fp_close_map;  
+	- new functions:  
+		/graphics  
+		- fp_new_frame;  
+			- st_relate_center;  
+			- st_relate_sides;  
+		- fp_erase_frame;  
+	- new structures:  
+		/libgraph.h  
+			- t_wireframe;  
 - 0.2.2 (map) 
 	- changed functions:  
 		/src  
