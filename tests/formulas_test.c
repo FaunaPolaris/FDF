@@ -1,4 +1,5 @@
 #include "libgraph.h"
+#include "formulas.h"
 
 int	main(int argc, char **argv)
 {

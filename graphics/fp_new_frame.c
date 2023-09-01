@@ -32,20 +32,14 @@ t_wireframe	**fp_new_frame(int max_x, int max_y)
 	return (grid);
 }
 
-void	fp_erase_frame(t_wireframe **grid, int max_x, int max_y)
+void	fp_erase_frame(t_wireframe **grid, int max_x)
 {
 	int	x;
-	int	y;
 
 	x = 0;
 	while (x < max_x)
 	{
-		y = 0;
-		while (y < max_y)
-		{
-			free(grid[x][y]);
-			y++;
-		}
+		free(grid[x]);
 		x++;
 	}
 	free(grid);
@@ -73,6 +67,7 @@ static void	st_relate_center(t_wireframe **grid, int max_x, int max_y)
 			y++;
 		}
 		x++;
+	}
 }
 
 static void	st_relate_sides(t_wireframe **grid, int max_x, int max_y)

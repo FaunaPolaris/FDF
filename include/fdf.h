@@ -10,15 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libgraph.h"
+#ifndef FDF_H
+# define FDF_H
+# include "libgraph.h"
 
-typedef struct s_map
+typedef struct s_fdfdata
 {
-	t_vector	vertice;
-	t_vector	isometric;
-	struct s_map	*next;
-}	t_map;
+	t_mlx		*mlx;
+	t_wireframe	**grid;
+	int		max_x;
+	int		max_y;
+	int		max_z;
+}	t_fdfdata;
 
-t_map	*fp_open_map(int fd);
-void	fp_close_map(t_map *map);
-void	fp_draw_map(t_mlx *data, t_map *map);
+t_fdfdata	*fdf_check_map(int fd, char *name);
+int		fdf_draw_map(t_wireframe **grid, t_fdfdata *data,	
+		t_vector (*fp) (const t_vector);
+int		fdf_apply_depth(int fd, t_fdfdata *data);
+
+#endif

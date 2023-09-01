@@ -22,7 +22,7 @@ void	fp_putline(t_mlx *data, t_vector point_a, t_vector point_b)
 	while (t <= 1)
 	{
 		x = ((1 - t) * point_a.x + (t * point_b.x)) + WIDTH / 2;
-		y = ((1 - t) * point_a.y + (t * point_b.y)) + HEIGHT / 4;
+		y = ((1 - t) * point_a.y + (t * point_b.y)) + HEIGHT / HGHT_SCL;
 		fp_putpixel(data, x, y, 0x55EE22);
 		t += 0.008;
 	}

@@ -1,5 +1,19 @@
 # libgraph
 Version history
+- 0.3.2 (wireframe)  
+	- new functions:
+		/fdf  
+		- fdf_check_map;  
+		- fdf_apply_depth;  
+		- fdf_draw_map;  
+	- structures:  
+		/fdf.h  
+		- t_fdfdata;  
+		/libgraph.h  
+		- t_wireframe + (int)color;
+	- new tests:  
+		- map_test;  
+		- draw_test;  
 - 0.3.1 (wireframe)  
 	- obsolete functions:  
 		/src -> obsolete  
@@ -14,7 +28,7 @@ Version history
 		- fp_erase_frame;  
 	- new structures:  
 		/libgraph.h  
-			- t_wireframe;  
+		- t_wireframe;  
 - 0.2.2 (map) 
 	- changed functions:  
 		/src  

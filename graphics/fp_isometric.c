@@ -12,19 +12,11 @@
 
 #include "libgraph.h"
 
-void	fp_isometric(t_vector *vertx, int quantity)
+t_vector	fp_isometric(const t_vector vertx)
 {
-	int	i;
-	double	new_x;
-	double	new_y;
+	t_vector	output;
 
-	i = 0;
-	while (i < quantity)
-	{
-		new_x = (vertx[i].x - vertx[i].y) * cos(0.5236);
-		new_y = -vertx[i].z + (vertx[i].x + vertx[i].y) * sin(0.5236);
-		vertx[i].x = new_x;
-		vertx[i].y = new_y;
-		i++;
-	}
+	output.x = (vertx.x - vertx.y) * cos(0.5236);
+	output.y = -vertx.z + (vertx.x + vertx.y) * sin(0.5236);
+	return (output);
 }

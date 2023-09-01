@@ -26,7 +26,7 @@ void	fp_butterfly(t_mlx *data, t_vector center)
 		mlx_put_image_to_window(data->mlx,
 			data->window, data->img->img, 0, 0);
 		printf("%f, %f \n", BUTTERFLY_X(i), BUTTERFLY_Y(i));
-//		usleep(1000 * 5);
+		usleep(1000 * 5);
 		i += 0.001;
 	}
 }

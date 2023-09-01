@@ -20,16 +20,9 @@
 
 # define WIDTH 1280
 # define HEIGHT 720
-# define SCALE 10
 
-typedef struct s_wireframe
-{
-	t_vector	vertice;
-	s_octree	*xplus;
-	s_octree	*xmins;
-	s_octree	*yplus;
-	s_octree	*ymins;
-}	t_wireframe
+# define HGHT_SCL 4
+# define SCALE 10
 
 typedef struct s_vector
 {
@@ -37,6 +30,16 @@ typedef struct s_vector
 	double	y;
 	double	z;
 }	t_vector;
+
+typedef struct s_wireframe
+{
+	t_vector	vertice;
+	int		color;
+	struct s_wireframe	*xplus;
+	struct s_wireframe	*xmins;
+	struct s_wireframe	*yplus;
+	struct s_wireframe	*ymins;
+}	t_wireframe;
 
 typedef struct s_img_data
 {
@@ -57,6 +60,9 @@ typedef struct s_mlx
 int	fp_graphical_init(char *title, t_mlx *data);
 void	fp_graphical_end(t_mlx *data);
 
+t_wireframe	**fp_new_frame(int max_x, int max_y);
+void		fp_erase_frame(t_wireframe **grid, int max_x);
+
 void	fp_putpixel(t_mlx *data, int x, int y, int color);
 void	fp_putvertice(t_mlx *data, t_vector *vertx, int quantity, int color);
 void	fp_putline(t_mlx *data, t_vector point_a, t_vector point_b);
@@ -68,7 +74,7 @@ void	fp_set_all(t_mlx *data, int color);
 
 void	fp_rotxvertice(t_vector *vertx, int quantity, double angle);
 
-void	fp_isometric(t_vector *vertx, int quantity);
+t_vector	fp_isometric(const t_vector vertx);
 t_vector	fp_find_center(void);
 
 #endif
