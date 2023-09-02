@@ -24,14 +24,22 @@ int	fdf_draw_map(t_wireframe **grid, t_fdfdata *data,
 		j = 0;
 		while (j < data->max_y)
 		{
-			fp_putline(data->mlx, fp(grid[i][j].vertice),
-					fp(grid[i][j].xplus->vertice),
-					0xFF0000);
+			if (i != data->max_x - 1)
+				fp_putline(data->mlx, fp(grid[i][j].vertice),
+						fp(grid[i][j].xplus->vertice),
+						grid[i][j].color);
+			if (j != data->max_y - 1)
+				fp_putline(data->mlx, fp(grid[i][j].vertice),
+						fp(grid[i][j].yplus->vertice),
+						grid[i][j].color);
 			j++;
+//			usleep(10 * 500);
 		}
 		i++;
+		mlx_put_image_to_window(data->mlx->mlx,
+					data->mlx->window,
+					data->mlx->img->img, 0, 0);
+	
 	}
-	mlx_put_image_to_window(data->mlx->mlx, data->mlx->window,
-				data->mlx->img->img, 0, 0);
 	return (1);
 }

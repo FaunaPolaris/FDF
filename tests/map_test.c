@@ -15,6 +15,7 @@ int	main(int argc, char **argv)
 	if (map->max_x < 1 || map->max_y < 1)
 		return (1);
 	fp_printf("(%i, %i, %i)\n", map->max_x, map->max_y, map->max_z);
+	free(map);
 	close(fd);
 	return (0);
 }

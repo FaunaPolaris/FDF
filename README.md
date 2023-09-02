@@ -1,11 +1,24 @@
 # libgraph
 Version history
+- 0.3.3 (wireframe)  
+	- changed functions:  
+		- fp_putline;  
+		- fp_isometric;  
+	- new test:  
+		- map_test; 
+	- new MACROS:  
+		- PRECISION;  
+		- HGHT_SCL; 
+	- .PHONY += tests clean_tests re_tests;   
 - 0.3.2 (wireframe)  
 	- new functions:
 		/fdf  
 		- fdf_check_map;  
 		- fdf_apply_depth;  
-		- fdf_draw_map;  
+		- fdf_draw_map; 
+		/graphics  
+		- fp_new_frame;  
+		- fp_erase_frame;   
 	- structures:  
 		/fdf.h  
 		- t_fdfdata;  

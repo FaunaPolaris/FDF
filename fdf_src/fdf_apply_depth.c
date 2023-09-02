@@ -47,7 +47,7 @@ static void	st_get_colors(char *position, t_fdfdata *data, int i, int j)
 	char	**split;
 
 	split = fp_split(position, ',');
-	data->grid[j][i].color = fp_atoi(split[1]);
+	data->grid[j][i].color = (int)fp_atox(split[1]);
 	data->grid[j][i].vertice.z = fp_atoi(split[0]);
 	st_free(NULL, split);
 }

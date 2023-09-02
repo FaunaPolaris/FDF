@@ -14,15 +14,15 @@
 #define LIBGRAPH_H
 
 # include <mlx.h>
-# include <math.h>
 # include "libft.h"
 # include "colors.h"
 
 # define WIDTH 1280
 # define HEIGHT 720
 
-# define HGHT_SCL 4
-# define SCALE 1
+# define PRECISION 0.001
+# define HGHT_SCL 7
+# define SCALE 4
 
 typedef struct s_vector
 {

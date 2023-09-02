@@ -105,6 +105,7 @@ static void	st_fill_positions(t_wireframe **grid, int max_x, int max_y)
 		{
 			grid[i][j].vertice.x = i * SCALE;
 			grid[i][j].vertice.y = j * SCALE;
+			grid[i][j].color = 0x00BB99;
 		}
 	}
 }

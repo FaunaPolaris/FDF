@@ -24,6 +24,6 @@ void	fp_putline(t_mlx *data, t_vector point_a, t_vector point_b, int color)
 		x = ((1 - t) * point_a.x + (t * point_b.x)) + WIDTH / 2;
 		y = ((1 - t) * point_a.y + (t * point_b.y)) + HEIGHT / HGHT_SCL;
 		fp_putpixel(data, x, y, color);
-		t += 0.008;
+		t += PRECISION;
 	}
 }

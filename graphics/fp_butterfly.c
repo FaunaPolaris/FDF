@@ -27,6 +27,6 @@ void	fp_butterfly(t_mlx *data, t_vector center)
 			data->window, data->img->img, 0, 0);
 		printf("%f, %f \n", BUTTERFLY_X(i), BUTTERFLY_Y(i));
 		usleep(1000 * 5);
-		i += 0.001;
+		i += PRECISION;
 	}
 }
