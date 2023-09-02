@@ -39,7 +39,7 @@ $(NAME):
 libft: 
 	@make -C $(LIBFT)
 
-tests: libft mlx_test map_test draw_test
+tests: libft mlx_test draw_test map_test
 
 mlx_test:
 	@$(CC) $(C_FLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_MLX) -o $@ $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
@@ -72,6 +72,7 @@ clean:
 clean_tests:
 	@rm -rf mlx_test
 	@rm -rf map_test
+	@rm -rf draw_test
 	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "Tests" "Cleaned"
 
 fclean: clean clean_tests

@@ -3,9 +3,10 @@
 int	main(int argc, char **argv)
 {
 	t_fdfdata	*data;
+	t_mlx		mlx;
 	int	fd;
 
-	data = NULL;
+	data = (t_fdfdata *)fp_calloc(1, sizeof(t_fdfdata));
 	if (argc != 2)
 	{
 		fp_printf("incorrect number of arguments");
@@ -17,13 +18,16 @@ int	main(int argc, char **argv)
 	data->grid = fp_new_frame(data->max_x, data->max_y);
 	fd = open(argv[1], O_RDONLY);
 	fdf_apply_depth(fd, data);
-	if (fp_graphical_init("draw_test", data->mlx))
+	if (fp_graphical_init("draw_test", &mlx))
 	{
 		fp_printf("error on graphical initialization");
 		return (1);
 	}
+	data->mlx = &mlx;
 	fdf_draw_map(data->grid, data, fp_isometric);
-	fp_erase_grid(data->grid, data->max_x);
-	fp_graphical_end(data->data);
+	usleep(10000 * 500);
+	fp_erase_frame(data->grid, data->max_x);
+	fp_graphical_end(data->mlx);
+	free(data);
 	return (0);
 }

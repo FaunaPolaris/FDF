@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf_draw_map.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/01 18:57:54 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/09/01 20:13:21 by fpolaris         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 int	fdf_draw_map(t_wireframe **grid, t_fdfdata *data,
-		t_vector (*fp) (t_vector *, int))
+				t_vector (*fp) (const t_vector))
 {
 	int	i;
 	int	j;
@@ -12,11 +24,14 @@ int	fdf_draw_map(t_wireframe **grid, t_fdfdata *data,
 		j = 0;
 		while (j < data->max_y)
 		{
-			fp_putline(data->mlx->mlx, fp(&grid[i][j].vertice, 1),
-					fp(&grid[i][j].xplus->vertice, 1));
+			fp_putline(data->mlx, fp(grid[i][j].vertice),
+					fp(grid[i][j].xplus->vertice),
+					0xFF0000);
 			j++;
 		}
 		i++;
 	}
+	mlx_put_image_to_window(data->mlx->mlx, data->mlx->window,
+				data->mlx->img->img, 0, 0);
 	return (1);
 }

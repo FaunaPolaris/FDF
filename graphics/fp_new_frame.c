@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 11:54:34 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/08/27 13:31:25 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/09/01 20:26:33 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	st_relate_center(t_wireframe **grid, int max_x, int max_y);
 static void	st_relate_sides(t_wireframe **grid, int max_x, int max_y);
+static void	st_fill_positions(t_wireframe **grid, int max_x, int max_y);
 
 t_wireframe	**fp_new_frame(int max_x, int max_y)
 {
@@ -29,6 +30,7 @@ t_wireframe	**fp_new_frame(int max_x, int max_y)
 	}
 	st_relate_center(grid, max_x, max_y);
 	st_relate_sides(grid, max_x, max_y);
+	st_fill_positions(grid, max_x, max_y);
 	return (grid);
 }
 
@@ -86,5 +88,23 @@ static void	st_relate_sides(t_wireframe **grid, int max_x, int max_y)
 	{
 		grid[i][0].ymins = &grid[i][max_y - 1];
 		grid[i][max_y - 1].yplus = &grid[i][0];
+		i++;
+	}
+}
+
+static void	st_fill_positions(t_wireframe **grid, int max_x, int max_y)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < max_x)
+	{
+		j = -1;
+		while (++j < max_y)
+		{
+			grid[i][j].vertice.x = i * SCALE;
+			grid[i][j].vertice.y = j * SCALE;
+		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 12:42:48 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/08/27 12:44:05 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/09/01 20:33:23 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define HEIGHT 720
 
 # define HGHT_SCL 4
-# define SCALE 10
+# define SCALE 1
 
 typedef struct s_vector
 {
@@ -65,7 +65,7 @@ void		fp_erase_frame(t_wireframe **grid, int max_x);
 
 void	fp_putpixel(t_mlx *data, int x, int y, int color);
 void	fp_putvertice(t_mlx *data, t_vector *vertx, int quantity, int color);
-void	fp_putline(t_mlx *data, t_vector point_a, t_vector point_b);
+void	fp_putline(t_mlx *data, t_vector point_a, t_vector point_b, int color);
 void	fp_putrect(t_mlx *data, t_vector *vertice);
 
 t_vector	*fp_rect(int width, int height, int depth);

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf_check_map.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/01 18:56:47 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/09/01 19:10:30 by fpolaris         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
-static void	st_free(char *line, char **grid):
+static void	st_free(char *line, char **grid);
 
 t_fdfdata	*fdf_check_map(int fd, char *name)
 {
@@ -9,7 +21,7 @@ t_fdfdata	*fdf_check_map(int fd, char *name)
 	char	*line;
 	char	**grid;
 
-	output = NULL;
+	output = (t_fdfdata *)fp_calloc(1, sizeof(t_fdfdata));
 	output->max_y = 0;
 	output->max_z = 0;
 	if (!(fp_strnstr(name, ".fdf", fp_strlen(name))))

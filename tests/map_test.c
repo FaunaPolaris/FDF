@@ -3,7 +3,7 @@
 
 int	main(int argc, char **argv)
 {
-	t_fdfdata	map;
+	t_fdfdata	*map;
 	int	fd;
 
 	fp_printf("initializing test\n");
@@ -12,9 +12,9 @@ int	main(int argc, char **argv)
 		return (1);
 	fd = open(argv[1], O_RDONLY);
 	map = fdf_check_map(fd, argv[1]);
-	if (map.max_x < 1 || map.max_y < 1)
+	if (map->max_x < 1 || map->max_y < 1)
 		return (1);
-	fp_printf("(%i, %i, %i)\n", map.max_x, map.max_y, map.max_z);
+	fp_printf("(%i, %i, %i)\n", map->max_x, map->max_y, map->max_z);
 	close(fd);
 	return (0);
 }
