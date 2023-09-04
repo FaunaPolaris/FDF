@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 08:06:13 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/09/01 20:10:03 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/09/04 14:55:53 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	fp_putline(t_mlx *data, t_vector point_a, t_vector point_b, int color)
 	while (t <= 1)
 	{
 		x = ((1 - t) * point_a.x + (t * point_b.x)) + WIDTH / 2;
-		y = ((1 - t) * point_a.y + (t * point_b.y)) + HEIGHT / HGHT_SCL;
+		y = ((1 - t) * point_a.y + (t * point_b.y)) + HEIGHT / 2;
 		fp_putpixel(data, x, y, color);
 		t += PRECISION;
 	}

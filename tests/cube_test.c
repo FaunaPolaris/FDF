@@ -12,7 +12,6 @@ int	main(int argc, char **argv)
 	if (fp_graphical_init("cube", &data))
 		return (1);
 	vertice = fp_rect(atoi(argv[1]), atoi(argv[2]), atoi(argv[3]));
-	fp_isometric(vertice, 8);
 	//fp_putvertice(&data, vertice, 8, 0xFF00FF);
 	while (i < 50)
 	{
