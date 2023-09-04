@@ -1,4 +1,7 @@
 # libgraph
+
+Graphical library for opening and drawing on a window, using the minilibx as a base for simplicity, the library was initially developed with the FDF project of the 42 school in mind, but focused on modularity and versatility for working with vectors.  
+
 Version history
 - 0.3.4 (wireframe)
 	- fused functions:  
