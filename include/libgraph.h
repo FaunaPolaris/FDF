@@ -22,7 +22,7 @@
 
 # define PRECISION 0.001
 # define HGHT_SCL 7
-# define SCALE 4
+# define SCALE 3
 
 typedef struct s_vector
 {

@@ -11,7 +11,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (1);
 	fd = open(argv[1], O_RDONLY);
-	map = fdf_check_map(fd, argv[1]);
+	map = fdf_read_map(fd, argv[1]);
 	if (map->max_x < 1 || map->max_y < 1)
 		return (1);
 	fp_printf("(%i, %i, %i)\n", map->max_x, map->max_y, map->max_z);

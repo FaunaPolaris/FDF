@@ -23,17 +23,18 @@ int	fdf_apply_depth(int fd, t_fdfdata *data)
 	int		j;
 
 	i = -1;
-	while (++i < data->max_y - 1)
+	while (++i < data->max_y)
 	{
 		line = get_next_line(fd);
 		grid = fp_split(line, ' ');
+		line[fp_strlen(line) - 1] = '\0';
 		if (!line || !grid)
 			return (st_free(line, grid));
 		j = -1;
-		while (++j < data->max_x - 1)
+		while (++j < data->max_x && j < fp_gridlen(grid) - 1)
 		{
 			if (fp_strchr(grid[j], ','))
-				st_get_colors(grid[j], data, i, j);
+				st_get_colors(grid[j], data, j, i);
 			else
 				data->grid[j][i].vertice.z = fp_atoi(grid[j]);
 		}
@@ -42,13 +43,15 @@ int	fdf_apply_depth(int fd, t_fdfdata *data)
 	return (0);
 }
 
-static void	st_get_colors(char *position, t_fdfdata *data, int i, int j)
+static void	st_get_colors(char *position, t_fdfdata *data, int x, int y)
 {
 	char	**split;
 
 	split = fp_split(position, ',');
-	data->grid[j][i].color = (int)fp_atox(split[1]);
-	data->grid[j][i].vertice.z = fp_atoi(split[0]);
+	if (!split || !split[1])
+		return ;
+	data->grid[x][y].color = (int)fp_atox(split[1]);
+	data->grid[x][y].vertice.z = fp_atoi(split[0]);
 	st_free(NULL, split);
 }
 

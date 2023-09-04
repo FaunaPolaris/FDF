@@ -11,7 +11,7 @@ SRCS_GRAPH	=	fp_graphical_init.c fp_graphical_end.c fp_putpixel.c
 SRCS_GRAPH	+=	fp_butterfly.c fp_find_center.c fp_rect.c fp_putvertice.c
 SRCS_GRAPH	+=	fp_rotxvertice.c fp_isometric.c fp_putline.c fp_putrect.c
 SRCS_GRAPH	+=	fp_set_all.c fp_new_frame.c
-SRCS_FDF	=	fdf_check_map.c fdf_draw_map.c fdf_apply_depth.c
+SRCS_FDF	=	fdf_read_map.c fdf_draw_map.c
 
 SRCS_ALL	+=	$(addprefix graphics/,$(SRCS_GRAPH))
 SRCS_ALL	+=	$(addprefix fdf_src/,$(SRCS_FDF))

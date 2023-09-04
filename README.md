@@ -1,5 +1,9 @@
 # libgraph
 Version history
+- 0.3.4 (wireframe)
+	- fused functions:  
+		- fdf_check_map + fdf_apply_depth:  
+		- = fdf_read_map;
 - 0.3.3 (wireframe)  
 	- changed functions:  
 		- fp_putline;  

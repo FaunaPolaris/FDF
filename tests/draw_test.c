@@ -4,7 +4,7 @@ int	main(int argc, char **argv)
 {
 	t_fdfdata	*data;
 	t_mlx		mlx;
-	int	fd;
+	int		fd;
 
 	data = (t_fdfdata *)fp_calloc(1, sizeof(t_fdfdata));
 	if (argc != 2)
@@ -13,17 +13,21 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	fd = open(argv[1], O_RDONLY);
-	data = fdf_check_map(fd, argv[1]);
+	data = fdf_read_map(fd, argv[1]);
 	close(fd);
-	data->grid = fp_new_frame(data->max_x, data->max_y);
-	fd = open(argv[1], O_RDONLY);
-	fdf_apply_depth(fd, data);
+	if (data->max_x == 0 && data->max_y == 0)
+		return (1);
 	if (fp_graphical_init("draw_test", &mlx))
 	{
 		fp_printf("error on graphical initialization");
 		return (1);
 	}
 	data->mlx = &mlx;
+	for (int i = 0; i < data->max_y; i++)
+	{
+			fp_putvertice(data->mlx, &data->grid[data->max_x - 1][i].vertice,
+					1, 0x0000FF);
+	}
 	fdf_draw_map(data->grid, data, fp_isometric);
 	usleep(10000 * 500);
 	fp_erase_frame(data->grid, data->max_x);
