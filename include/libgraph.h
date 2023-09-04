@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 12:42:48 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/09/01 20:33:23 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/09/04 14:38:25 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # define HEIGHT 720
 
 # define PRECISION 0.001
-# define HGHT_SCL 7
-# define SCALE 3
+# define HGHT_SCL 4
+# define SCALE 4
 
 typedef struct s_vector
 {

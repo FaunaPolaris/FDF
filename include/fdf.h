@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 10:44:00 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/09/01 19:00:24 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/09/04 13:59:30 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_fdfdata
 	int		max_z;
 }	t_fdfdata;
 
-t_fdfdata	*fdf_read_map(int fd, char *name);
+t_fdfdata	*fdf_read_map(char *name);
 int		fdf_draw_map(t_wireframe **grid, t_fdfdata *data,
 				t_vector (*fp) (const t_vector));
 
