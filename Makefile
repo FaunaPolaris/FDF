@@ -22,6 +22,7 @@ YELLOW		=	;33
 MAGENTA		=	;35
 CYAN		=	;36
 
+TMAIN_CNW	=	tests/Conway.c
 TMAIN_MLX	=	tests/mlx_test.c
 TMAIN_MAP	=	tests/map_test.c
 TMAIN_DRW	=	tests/draw_test.c
@@ -39,7 +40,7 @@ $(NAME):
 libft: 
 	@make -C $(LIBFT)
 
-tests: libft mlx_test draw_test map_test
+tests: libft mlx_test draw_test map_test conway_test
 
 mlx_test:
 	@$(CC) $(C_FLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_MLX) -o $@ $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
@@ -57,6 +58,10 @@ map_test:
 	@$(CC) $(C_FLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_MAP) -o $@ $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
 	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "map_test" "Compiled"
 
+conway_test:
+	@$(CC) $(C_FLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_CNW) -o $@ $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
+	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "conway_test" "Compiled"
+
 draw_test:
 	@$(CC) $(C_FLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_DRW) -o $@ $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
 	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "draw_test" "Compiled"
@@ -73,6 +78,7 @@ clean_tests:
 	@rm -rf mlx_test
 	@rm -rf map_test
 	@rm -rf draw_test
+	@rm -rf conway_test
 	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "Tests" "Cleaned"
 
 fclean: clean clean_tests
