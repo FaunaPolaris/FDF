@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 11:54:34 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/09/04 14:45:23 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/09/07 18:50:17 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,16 +96,22 @@ static void	st_fill_positions(t_wireframe **grid, int max_x, int max_y)
 {
 	int	i;
 	int	j;
+	int	x;
+	int	y;
 
+	x = -max_x / 2;
 	i = -1;
 	while (++i < max_x)
 	{
 		j = -1;
+		y = -max_y / 2;
 		while (++j < max_y)
 		{
-			grid[i][j].vertice.x = i * SCALE;
-			grid[i][j].vertice.y = j * SCALE;
+			grid[i][j].vertice.x = x * SCALE;
+			grid[i][j].vertice.y = y * SCALE;
 			grid[i][j].color = 0x00BB99;
+			y++;
 		}
+		x++;
 	}
 }

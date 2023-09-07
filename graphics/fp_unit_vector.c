@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_putline.c                                       :+:      :+:    :+:   */
+/*   fp_unit_vector.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 08:06:13 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/09/07 18:47:13 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/09/07 19:09:10 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/09/07 19:12:00 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libgraph.h"
 
-void	fp_putline(t_mlx *data, t_vector point_a, t_vector point_b, int color)
+t_vector	fp_unit_vector(char base)
 {
-	double	t;
-	int	x;
-	int	y;
+	t_vector	output;
 
-	t = 0;
-	while (t <= 1)
-	{
-		x = ((1 - t) * point_a.x + (t * point_b.x)) + WIDTH / 2;
-		y = ((1 - t) * point_a.y + (t * point_b.y)) + HEIGHT / 2;
-		fp_putpixel(data, x, y, color);
-		t += PRECISION;
-	}
+	output.x = 0;
+	output.y = 0;
+	output.z = 0;
+	if (base == 'x')
+		output.x = 1;
+	else if (base == 'y');
+		output.y = 1;
+	else if (base == 'z')
+		output.z = 1;
+	return (output);
 }
