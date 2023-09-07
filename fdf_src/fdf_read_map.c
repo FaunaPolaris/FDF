@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 18:56:47 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/09/04 14:21:43 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/09/06 16:47:39 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ static void	st_find_size(int fd, t_fdfdata *data)
 	while (1)
 	{
 		line = get_next_line(fd);
+		if (!line)
+			return (st_free(line, NULL));
 		grid = fp_split(line, ' ');
-		if (!line || !grid)
+		if (!grid)
 			return (st_free(line, grid));
 		line[fp_strlen(line) - 1] = '\0';
 		if (fp_gridlen(grid) > data->max_x)
@@ -67,8 +69,10 @@ static void	st_find_specs(int fd, t_fdfdata *data)
 	while (++i < data->max_y)
 	{
 		line = get_next_line(fd);
+		if (!line)
+			return (st_free(line, NULL));
 		posix = fp_split(line, ' ');
-		if (!line || !posix)
+		if (!posix)
 			return (st_free(line, posix));
 		line[fp_strlen(line) - 1] = '\0';
 		j = -1;
@@ -99,7 +103,7 @@ static void	st_free(char *line, char **grid)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
 	if (line)
 		free(line);
 	if (grid)

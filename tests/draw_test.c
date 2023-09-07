@@ -20,11 +20,6 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	data->mlx = &mlx;
-	for (int i = 0; i < data->max_y; i++)
-	{
-			fp_putvertice(data->mlx, &data->grid[data->max_x - 1][i].vertice,
-					1, 0x0000FF);
-	}
 	fdf_draw_map(data->grid, data, fp_isometric);
 	usleep(10000 * 500);
 	fp_erase_frame(data->grid, data->max_x);

@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 12:42:48 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/09/04 16:05:36 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:36:32 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <mlx.h>
 # include "libft.h"
 # include "colors.h"
+# include "keys.h"
 
 # define WIDTH 1280
 # define HEIGHT 720
@@ -68,11 +69,12 @@ void	fp_putvertice(t_mlx *data, t_vector *vertx, int quantity, int color);
 void	fp_putline(t_mlx *data, t_vector point_a, t_vector point_b, int color);
 void	fp_putrect(t_mlx *data, t_vector *vertice);
 
+void	fp_applymatrix3d(t_vector *vector, double (*matrix)[3][3]);
+double	(*mtx_rotate(char axis, double angle))[3][3];
+
 t_vector	*fp_rect(int width, int height, int depth);
 
 void	fp_set_all(t_mlx *data, int color);
-
-void	fp_rotxvertice(t_vector *vertx, int quantity, double angle);
 
 t_vector	fp_isometric(const t_vector vertx);
 t_vector	fp_find_center(void);

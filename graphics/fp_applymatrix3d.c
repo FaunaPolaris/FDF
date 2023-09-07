@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_rotxvertice.c                                   :+:      :+:    :+:   */
+/*   fp_applymatrix3d.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/15 16:07:23 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/08/21 10:23:05 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/09/07 11:56:46 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/09/07 13:11:31 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libgraph.h"
 
-void	fp_rotxvertice(t_vector *vertice, int quantity, double angle)
+void	fp_applymatrix3d(t_vector *vector, double (*matrix)[3][3])
 {
-	int	i;
-	int	new_y;
-	int	new_z;
+	double	x;
+	double	y;
+	double	z;
 
-	i = 0;
-	while (i < quantity)
-	{
-		new_y = (vertice[i].y * cos(angle))
-				- (vertice[i].z * sin(angle));
-		new_z = (vertice[i].y * sin(angle))
-				+ (vertice[i].z * cos(angle));
-		vertice[i].y = new_y;
-		vertice[i].z = new_z;
-		i++;
-	}
+	x = vector->x;
+	y = vector->y;
+	z = vector->z;
+	vector->x = (x * (*matrix)[0][0]) + (y * (*matrix)[0][1]) +
+				(z * (*matrix)[0][2]);
+	vector->y = (x * (*matrix)[1][0]) + (y * (*matrix)[1][1]) +
+				(z * (*matrix)[1][2]);
+	vector->z = (x * (*matrix)[2][0]) + (y * (*matrix)[2][1]) +
+				(z * (*matrix)[2][2]);
 }
