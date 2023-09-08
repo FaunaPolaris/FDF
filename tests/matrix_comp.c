@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_isometric.c                                     :+:      :+:    :+:   */
+/*   matrix_comp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/16 12:46:26 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/09/08 16:38:35 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/09/08 15:09:59 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/09/08 16:33:03 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libgraph.h"
 
-t_vector	fp_isometric(const t_vector vertx)
+int	main(int argc, char **argv)
 {
-	t_vector	output;
+	t_fdfdata	*data;
+	t_mlx		mlx;
 
-	output.x = (vertx.x - vertx.y) * cos(45 * (M_PI / 180));
-	output.y = (-vertx.z / HGHT_SCL) + (vertx.x + vertx.y)
-			* sin(30 *(M_PI / 180));
-	return (output);
+	if (argc != 2)
+		return (1);
+	if (fp_graphical_init(&mlx))
+		return (1);
+	data->mlx = &mlx;
+	mlx_key_hook(data->mlx->window, st_handle_rot, data);
+
 }

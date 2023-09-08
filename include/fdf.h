@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 10:44:00 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/09/04 13:59:30 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/09/08 15:15:06 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_fdfdata
 	int		max_x;
 	int		max_y;
 	int		max_z;
+	double		matrix[3][3];
 }	t_fdfdata;
 
 t_fdfdata	*fdf_read_map(char *name);
