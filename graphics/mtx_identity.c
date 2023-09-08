@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_isometric.c                                     :+:      :+:    :+:   */
+/*   mtx_identity.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/16 12:46:26 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/09/08 19:33:57 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/09/08 19:51:15 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/09/08 20:01:59 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libgraph.h"
 
-t_vector	fp_isometric(const t_vector vertx)
+void	mtx_identity3(double matrix[3][3])
 {
-	t_vector	output;
+	double	output[3][3];
+	int	i;
+	int	j;
 
-	output.x = (vertx.x - vertx.y) * cos(45 * (M_PI / 180));
-	output.y = (-vertx.z + vertx.x + vertx.y)
-			* sin(30 *(M_PI / 180));
-	return (output);
+	i = -1;
+	while (++i < 3)
+	{
+		j = -1;
+		while (++j < 3)
+		{
+			if (i == j)
+				matrix[i][j] = 1;
+			else
+				matrix[i][j] = 0;
+		}
+	}
 }

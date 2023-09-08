@@ -10,7 +10,8 @@ LIBFT		=	./include/libft/
 SRCS_GRAPH	=	fp_graphical_init.c fp_graphical_end.c fp_putpixel.c
 SRCS_GRAPH	+=	fp_butterfly.c fp_find_center.c fp_rect.c fp_putvertice.c
 SRCS_GRAPH	+=	fp_isometric.c fp_putline.c fp_putrect.c
-SRCS_GRAPH	+=	fp_set_all.c fp_new_frame.c fp_applymatrix3d.c mtx_rotate.c
+SRCS_GRAPH	+=	fp_set_all.c fp_new_frame.c mtx_apply3.c mtx_rotate.c
+SRCS_GRAPH	+=	mtx_identity.c
 SRCS_FDF	=	fdf_read_map.c fdf_draw_map.c
 
 SRCS_ALL	+=	$(addprefix graphics/,$(SRCS_GRAPH))
@@ -22,6 +23,7 @@ YELLOW		=	;33
 MAGENTA		=	;35
 CYAN		=	;36
 
+TMAIN_MTX	=	tests/matrix_comp.c
 TMAIN_LnR	=	tests/loop_rotate.c
 TMAIN_CNW	=	tests/Conway.c
 TMAIN_MLX	=	tests/mlx_test.c
@@ -41,7 +43,7 @@ $(NAME):
 libft: 
 	@make -C $(LIBFT)
 
-tests: libft mlx_test draw_test map_test loop_test
+tests: libft mlx_test draw_test map_test loop_test mtx_test
 
 mlx_test:
 	@$(CC) $(C_FLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_MLX) -o $@ $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
@@ -71,6 +73,9 @@ loop_test:
 	@$(CC) $(C_FLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_LnR) -o $@ $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
 	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "loop_test" "Compiled"
 
+mtx_test:
+	@$(CC) $(C_FLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_MTX) -o $@ $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
+	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "mtx_test" "Compiled"
 cube:
 	@$(CC) $(C_FLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_CUBE) -o $@ $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
 	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s$(ANSI)m\n" "Cube" "Compiled"
@@ -86,6 +91,7 @@ clean_tests:
 	@rm -rf draw_test
 	@rm -rf conway_test
 	@rm -rf loop_test
+	@rm -rf mtx_test
 	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "Tests" "Cleaned"
 
 fclean: clean clean_tests

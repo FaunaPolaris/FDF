@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 12:42:48 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/09/08 15:41:12 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/09/08 20:08:53 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,10 @@ void	fp_putvertice(t_mlx *data, t_vector *vertx, int quantity, int color);
 void	fp_putline(t_mlx *data, t_vector point_a, t_vector point_b, int color);
 void	fp_putrect(t_mlx *data, t_vector *vertice);
 
-void	fp_applymatrix3d(t_vector *vector, double (*matrix)[3][3]);
+t_vector	mtx_apply3(const t_vector vector, double (*matrix)[3][3]);
+void		mtx_identity3(double matrix[3][3]);
 double	(*mtx_rotate(char axis, double angle))[3][3];
+double	(*mtx_multiply3d(double matrix[3][3], double matrix[3][3]))[3][3];
 
 t_vector	*fp_rect(int width, int height, int depth);
 
