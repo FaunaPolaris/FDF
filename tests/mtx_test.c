@@ -5,16 +5,20 @@ int	main(int argc, char **argv)
 	t_matrix	a;
 	t_matrix	b;
 	t_matrix	c;
+	t_vector	v;
+
+	v.x = argv[1][0] - 48;
+	v.y = argv[1][2] - 48;
+	v.z = argv[1][4] - 48;
 
 	if (argc != 3)
 		return (1);
-	a = mtx_new(3, 3);
+	a = mtx_fromv(v, 1);
 	b = mtx_new(3, 3);
-	mtx_fill(&a, argv[1]);
 	mtx_fill(&b, argv[2]);
-	c = mtx_multiply(a, b);
 	mtx_print(a);
 	mtx_print(b);
+	c = mtx_multiply(a, b);
 	fp_printf("=\n");
 	mtx_print(c);
 	mtx_free(a);

@@ -12,18 +12,20 @@
 
 #include "libgraph.h"
 
-void	fp_putline(t_mlx *data, t_vector point_a, t_vector point_b, int color)
+void	fp_putline(t_mlx *data, t_vector point_a, t_vector point_b)
 {
 	double	t;
-	int	x;
-	int	y;
+	double	x;
+	double	y;
+	int	c_temp;
 
 	t = 0;
 	while (t <= 1)
 	{
-		x = ((1 - t) * point_a.x + (t * point_b.x)) + WIDTH / 2;
-		y = ((1 - t) * point_a.y + (t * point_b.y)) + HEIGHT / 2;
-		fp_putpixel(data, x, y, color);
+		x = fp_lerp(point_a.x, point_b.x, t) + WIDTH / 2;
+		y = -fp_lerp(point_a.y, point_b.y, t) + HEIGHT / 2;
+		c_temp = fp_lerpcolor(point_a.color, point_b.color, t);
+		fp_putpixel(data, (int)x, (int)y, c_temp);
 		t += PRECISION;
 	}
 }

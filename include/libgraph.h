@@ -26,13 +26,6 @@
 # define HGHT_SCL 1
 # define SCALE 4
 
-typedef struct s_vector
-{
-	double	x;
-	double	y;
-	double	z;
-}	t_vector;
-
 typedef struct s_wireframe
 {
 	t_vector	vertice;
@@ -67,8 +60,7 @@ void		fp_erase_frame(t_wireframe **grid, int max_x);
 
 void	fp_putpixel(t_mlx *data, int x, int y, int color);
 void	fp_putvertice(t_mlx *data, t_vector *vertx, int quantity, int color);
-void	fp_putline(t_mlx *data, t_vector point_a, t_vector point_b, int color);
-void	fp_putrect(t_mlx *data, t_vector *vertice);
+void	fp_putline(t_mlx *data, t_vector point_a, t_vector point_b);
 
 t_vector	*fp_rect(int width, int height, int depth);
 
@@ -76,5 +68,7 @@ void	fp_set_all(t_mlx *data, int color);
 
 t_vector	fp_isometric(const t_vector vertx);
 t_vector	fp_find_center(void);
+double		fp_lerp(double v1, double v2, double t);
+int		fp_lerpcolor(int color1, int color2, double t);
 
 #endif

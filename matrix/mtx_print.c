@@ -11,11 +11,12 @@ void	mtx_print(t_matrix m)
 	i = -1;
 	while (++i < m.size)
 	{
-	 	x = i / m.col;
-		y = i % m.col;
-		fp_printf("%5i", (int)m.elem[x][y]);
-		if (y == m.col - 1)
+	 	x = i % m.col;
+		y = i / m.col;
+		if (x < m.col && y < m.row)
+			fp_printf("%5i", (int)m.elem[x][y]);
+		if (x == m.col - 1)
 			fp_printf("\n");
 	}
 	fp_printf("\n");
-	}
+}

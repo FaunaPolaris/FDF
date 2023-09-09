@@ -3,6 +3,15 @@
 Graphical library for opening and drawing on a window, using the minilibx as a base for simplicity, the library was initially developed with the FDF project of the 42 school in mind, but focused on modularity and versatility for working with vectors.  
 
 Version history
+- 0.4.1 (lerping)  
+	- new function:  
+		graphics/  
+		- fp_lerp;  
+		- fp_lerpcolor;  
+		matrix/  
+		- fp_mtx_fromv;  
+	- new test:  
+		- lerp_test;  
 - 0.4.0 (matrix)  
 	- new header:  
 		- matrix.h; 

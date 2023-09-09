@@ -9,10 +9,10 @@ LIBFT		=	./include/libft/
 
 SRCS_GRAPH	=	fp_graphical_init.c fp_graphical_end.c fp_putpixel.c
 SRCS_GRAPH	+=	fp_butterfly.c fp_find_center.c fp_rect.c fp_putvertice.c
-SRCS_GRAPH	+=	fp_isometric.c fp_putline.c fp_putrect.c
+SRCS_GRAPH	+=	fp_isometric.c fp_putline.c fp_lerp.c
 SRCS_GRAPH	+=	fp_set_all.c fp_new_frame.c
 SRCS_MTX	=	mtx_identity.c mtx_multiply.c mtx_new.c mtx_fill.c mtx_null.c
-SRCS_MTX	+=	mtx_print.c
+SRCS_MTX	+=	mtx_print.c mtx_fromv.c
 
 SRCS_ALL	+=	$(addprefix graphics/,$(SRCS_GRAPH))
 SRCS_ALL	+=	$(addprefix fdf_src/,$(SRCS_FDF))
@@ -25,6 +25,7 @@ MAGENTA		=	;35
 CYAN		=	;36
 
 TMAIN_MTX	=	tests/mtx_test.c
+TMAIN_LERP	=	tests/lerp_test.c
 
 all: libft $(NAME) cube formulas
 
@@ -37,7 +38,7 @@ $(NAME):
 libft: 
 	@make -C $(LIBFT)
 
-tests: libft mtx_test
+tests: libft mtx_test lerp_test
 
 formulas:
 	@$(CC) $(C_FLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_FORM) -o $@ $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
@@ -51,6 +52,10 @@ mtx_test:
 	@$(CC) $(C_FLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_MTX) -o $@ $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
 	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s$(ANSI)m\n" "mtx_test" "Compiled"
 
+lerp_test:
+	@$(CC) $(C_FLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_LERP) -o $@ $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
+	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s$(ANSI)m\n" "lerp_test" "Compiled"
+
 cube:
 	@$(CC) $(C_FLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_CUBE) -o $@ $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
 	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s$(ANSI)m\n" "Cube" "Compiled"
@@ -62,6 +67,7 @@ clean:
 
 clean_tests:
 	@rm -rf mtx_test
+	@rm -rf lerp_test
 	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "Tests" "Cleaned"
 
 fclean: clean clean_tests

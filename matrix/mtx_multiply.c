@@ -31,9 +31,7 @@ t_matrix	mtx_multiply(const t_matrix a, const t_matrix b)
 		{
 			x = i / c.col;
 			y = i % c.col;
-			c.elem[x][y] +=
-				a.elem[x][j] *
-				b.elem[j][y];
+			c.elem[x][y] += a.elem[x][j] * b.elem[j][y];
 			if (j == 0)
 				fp_printf("C(%i, %i) = ", i / c.col, i % c.col);
 			fp_printf("A(%i, %i) * B(%i, %i)", x, j, j, y);
