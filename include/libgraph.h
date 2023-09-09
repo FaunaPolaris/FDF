@@ -17,6 +17,7 @@
 # include "libft.h"
 # include "colors.h"
 # include "keys.h"
+# include "matrix.h"
 
 # define WIDTH 1280
 # define HEIGHT 720
@@ -68,11 +69,6 @@ void	fp_putpixel(t_mlx *data, int x, int y, int color);
 void	fp_putvertice(t_mlx *data, t_vector *vertx, int quantity, int color);
 void	fp_putline(t_mlx *data, t_vector point_a, t_vector point_b, int color);
 void	fp_putrect(t_mlx *data, t_vector *vertice);
-
-t_vector	mtx_apply3(const t_vector vector, double (*matrix)[3][3]);
-void		mtx_identity3(double matrix[3][3]);
-double	(*mtx_rotate(char axis, double angle))[3][3];
-double	(*mtx_multiply3d(double matrix[3][3], double matrix[3][3]))[3][3];
 
 t_vector	*fp_rect(int width, int height, int depth);
 

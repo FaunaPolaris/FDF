@@ -3,6 +3,20 @@
 Graphical library for opening and drawing on a window, using the minilibx as a base for simplicity, the library was initially developed with the FDF project of the 42 school in mind, but focused on modularity and versatility for working with vectors.  
 
 Version history
+- 0.4.0 (matrix)  
+	- new header:  
+		- matrix.h; 
+	matrix functions:  
+		- mtx_new;  
+		- mtx_identity;  
+		- mtx_multiply;   
+		- mtx_fill;  
+		- mtx_print;  
+		- mtx_free;  
+		- mtx_null;
+	new test:  
+		- mtx_test;  
+	OBS: ALL OTHER TESTS REMOVED;  
 - 0.3.6 (rotation)  
 	- new functions:  
 		/graphics  

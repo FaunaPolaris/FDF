@@ -3,10 +3,21 @@
 
 typedef struct s_matrix
 {
-	int	collums;
-	int	rows;
-	int	square;
+	int	col;
+	int	row;
+	int	size;
 	double	**elem;
 }	t_matrix;
+
+
+t_matrix	mtx_new(int col, int row);
+t_matrix	mtx_identity(int size);
+
+t_matrix	mtx_multiply(const t_matrix a, const t_matrix b);
+void		mtx_fill(t_matrix *m, char *content);
+void		mtx_print(t_matrix m);
+
+void		mtx_free(t_matrix m);
+t_matrix	mtx_null(void);
 
 #endif

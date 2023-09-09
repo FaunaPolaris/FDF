@@ -12,26 +12,35 @@
 
 #include "libgraph.h"
 
-double	(*mtx_multiply3d(double matrix1[3][3], double matrix2[3][3]))[3][3]
+t_matrix	mtx_multiply(const t_matrix a, const t_matrix b)
 {
-	double	output[3][3];
-	int		i;
-	int		j;
-	int		k;
+	t_matrix	c;
+	int			i;
+	int			j;
+	int			x;
+	int			y;
 
 	i = -1;
-	while (++i < 3)
+	if (a.row != b.col)
+		return (mtx_null());
+	c = mtx_new(a.row, b.col);
+	while (++i < c.size)
 	{
 		j = -1;
-		while (++j < 3)
+		while (++j < c.row)
 		{
-			output[i][j] = 0.0;
-			k = -1;
-			while (++k < 3)
-			{
-				output[i][j] += matrix1[i][k] * matrix2[k][j];
-			}
+			x = i / c.col;
+			y = i % c.col;
+			c.elem[x][y] +=
+				a.elem[x][j] *
+				b.elem[j][y];
+			if (j == 0)
+				fp_printf("C(%i, %i) = ", i / c.col, i % c.col);
+			fp_printf("A(%i, %i) * B(%i, %i)", x, j, j, y);
+			if (j != c.col - 1)
+				fp_printf(" + ");
 		}
+		fp_printf("\n");
 	}
-	return (output);
+	return (c);
 }

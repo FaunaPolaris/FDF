@@ -12,12 +12,9 @@
 
 #include "libgraph.h"
 
-t_vector	fp_applymatrix3d(const t_vector vector, double (*matrix)[3][3])
+t_vector	mtx_apply(const t_vector vector, const t_matrix m)
 {
 	t_vector	output;
-	double	x;
-	double	y;
-	double	z;
 
 	x = vector.x;
 	y = vector.y;

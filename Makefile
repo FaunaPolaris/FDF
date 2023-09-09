@@ -11,11 +11,12 @@ SRCS_GRAPH	=	fp_graphical_init.c fp_graphical_end.c fp_putpixel.c
 SRCS_GRAPH	+=	fp_butterfly.c fp_find_center.c fp_rect.c fp_putvertice.c
 SRCS_GRAPH	+=	fp_isometric.c fp_putline.c fp_putrect.c
 SRCS_GRAPH	+=	fp_set_all.c fp_new_frame.c
-SRCS_MTX	=	mtx_rotate.c mtx_identity.c mtx_apply.c mtx_multiply.c
-SRCS_FDF	=	fdf_read_map.c fdf_draw_map.c
+SRCS_MTX	=	mtx_identity.c mtx_multiply.c mtx_new.c mtx_fill.c mtx_null.c
+SRCS_MTX	+=	mtx_print.c
 
 SRCS_ALL	+=	$(addprefix graphics/,$(SRCS_GRAPH))
 SRCS_ALL	+=	$(addprefix fdf_src/,$(SRCS_FDF))
+SRCS_ALL	+=	$(addprefix matrix/,$(SRCS_MTX))
 
 ANSI		=	\033[0
 BOLD		=	;1
@@ -23,14 +24,7 @@ YELLOW		=	;33
 MAGENTA		=	;35
 CYAN		=	;36
 
-TMAIN_MTX	=	tests/matrix_comp.c
-TMAIN_LnR	=	tests/loop_rotate.c
-TMAIN_CNW	=	tests/Conway.c
-TMAIN_MLX	=	tests/mlx_test.c
-TMAIN_MAP	=	tests/map_test.c
-TMAIN_DRW	=	tests/draw_test.c
-TMAIN_FORM	=	tests/formulas_test.c
-TMAIN_CUBE	=	tests/cube_test.c
+TMAIN_MTX	=	tests/mtx_test.c
 
 all: libft $(NAME) cube formulas
 
@@ -43,39 +37,20 @@ $(NAME):
 libft: 
 	@make -C $(LIBFT)
 
-tests: libft mlx_test draw_test map_test loop_test mtx_test
-
-mlx_test:
-	@$(CC) $(C_FLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_MLX) -o $@ $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
-	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "mlx_test" "Compiled"
+tests: libft mtx_test
 
 formulas:
-	@$(CC) $(C_GLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_FORM) -o $@ $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
+	@$(CC) $(C_FLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_FORM) -o $@ $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
 	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "formulas" "Compiled"
 	@echo
 	@printf "%s: $(ANSI)$(MAGENTA)m%.15s$(ANSI)m" " B" "butterfly_curve"
 	@printf "%s: $(ANSI)$(MAGENTA)m%.15s$(ANSI)m" "| B" "butterfly_curve"
 	@echo
 
-map_test:
-	@$(CC) $(C_FLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_MAP) -o $@ $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
-	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "map_test" "Compiled"
-
-conway_test:
-	@$(CC) $(C_FLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_CNW) -o $@ $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
-	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "conway_test" "Compiled"
-
-draw_test:
-	@$(CC) $(C_FLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_DRW) -o $@ $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
-	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "draw_test" "Compiled"
-
-loop_test:
-	@$(CC) $(C_FLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_LnR) -o $@ $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
-	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "loop_test" "Compiled"
-
 mtx_test:
 	@$(CC) $(C_FLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_MTX) -o $@ $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
-	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "mtx_test" "Compiled"
+	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s$(ANSI)m\n" "mtx_test" "Compiled"
+
 cube:
 	@$(CC) $(C_FLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_CUBE) -o $@ $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
 	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s$(ANSI)m\n" "Cube" "Compiled"
@@ -86,11 +61,6 @@ clean:
 	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "Objects" "Cleaned"
 
 clean_tests:
-	@rm -rf mlx_test
-	@rm -rf map_test
-	@rm -rf draw_test
-	@rm -rf conway_test
-	@rm -rf loop_test
 	@rm -rf mtx_test
 	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "Tests" "Cleaned"
 

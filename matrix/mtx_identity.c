@@ -12,22 +12,24 @@
 
 #include "libgraph.h"
 
-void	mtx_identity3(double matrix[3][3])
+t_matrix	mtx_identity(int size)
 {
-	double	output[3][3];
-	int	i;
-	int	j;
+	t_matrix	output;
+	int			i;
+	int			j;
 
+	output = mtx_new(size, size);
 	i = -1;
-	while (++i < 3)
+	while (++i < size)
 	{
 		j = -1;
-		while (++j < 3)
+		while (++j < size)
 		{
 			if (i == j)
-				matrix[i][j] = 1;
+				output.elem[i][j] = 1;
 			else
-				matrix[i][j] = 0;
+				output.elem[i][j] = 0;
 		}
 	}
+	return (output);
 }
