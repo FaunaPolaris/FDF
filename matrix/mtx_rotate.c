@@ -4,58 +4,69 @@ static void	st_rotx(double angle, double (*matrix)[3][3]);
 static void	st_roty(double angle, double (*matrix)[3][3]);
 static void	st_rotz(double angle, double (*matrix)[3][3]);
 
-double	(*mtx_rotate(char axis, double angle))[3][3]
+t_matrix	mtx_rotate(char axes, double angle)
 {
-	double			omega;
-	static double	matrix[3][3];
+	double	radian;
 
-	omega = (angle * (M_PI / 180));
-	if (axis == 'x')
-		st_rotx(angle, &matrix);
-	else if (axis == 'y')
-		st_roty(angle, &matrix);
-	else if (axis == 'z')
-		st_rotz(angle, &matrix);
-	else
-		st_rotx(0, &matrix);
-	return (&matrix);
+	if (angle > 380)
+		angle -= 380
+	radian = angle * (M_PI / 180);
+	if (axes == 'x')
+		return (st_rotx(radian));
+	if (axes == 'y')
+		return (st_roty(radian));
+	if (axes == 'z')
+		return (st_rotz(radian));
+	return (mtx_null)
 }
 
-static void	st_rotx(double angle, double (*matrix)[3][3])
+static t_matrix	st_rotx(double radian)
 {
-	matrix[0][0][0] = 1;
-	matrix[0][1][0] = 0;
-	matrix[0][2][0] = 0;
-	matrix[0][0][1] = 0;
-	matrix[0][0][2] = 0;
-	matrix[0][1][1] = cos(angle * (M_PI / 180));
-	matrix[0][1][2] = -sin(angle * (M_PI / 180));
-	matrix[0][2][1] = sin(angle * (M_PI / 180));
-	matrix[0][2][2] = cos(angle * (M_PI / 180));
+	t_matrix	m;
+
+	m = mtx_new(3, 3);
+	m.elem[0][0] = 1;
+	m.elem[0][1] = 0;
+	m.elem[0][2] = 0;
+	m.elem[1][0] = 0;
+	m.elem[1][1] = cos(radian);
+	m.elem[1][2] = -sin(radian);
+	m.elem[2][0] = 0;
+	m.elem[2][1] = sin(radian);
+	m.elem[2][2] = cos(radian);
+	return (m);
 }
 
-static void	st_roty(double angle, double (*matrix)[3][3])
+static t_matrix	st_roty(double radian)
 {
-	matrix[0][0][0] = cos(angle * (M_PI / 180));
-	matrix[0][1][0] = 0;
-	matrix[0][2][0] = -sin(angle * (M_PI / 180));
-	matrix[0][0][1] = 0;
-	matrix[0][0][2] = sin(angle * (M_PI / 180));
-	matrix[0][1][1] = 1;
-	matrix[0][1][2] = 0;
-	matrix[0][2][1] = 0;
-	matrix[0][2][2] = cos(angle * (M_PI / 180));
+	t_matrix	m;
+
+	m = mtx_new(3, 3);
+	m.elem[0][0] = cos(radian);
+	m.elem[0][1] = 0;
+	m.elem[0][2] = sin(radian);
+	m.elem[1][0] = 0;
+	m.elem[1][1] = 1;
+	m.elem[1][2] = 0;
+	m.elem[2][0] = -sin(radian);
+	m.elem[2][1] = 0;
+	m.elem[2][2] = cos(radian);
+	return (m);
 }
 
-static void	st_rotz(double angle, double (*matrix)[3][3])
+static t_matrix	st_rotz(double radian)
 {
-	matrix[0][0][0] = cos(angle * (M_PI / 180));
-	matrix[0][1][0] = sin(angle * (M_PI / 180));
-	matrix[0][2][0] = 0;
-	matrix[0][0][1] = -sin(angle * (M_PI / 180));
-	matrix[0][0][2] = 0;
-	matrix[0][1][1] = cos(angle * (M_PI / 180));
-	matrix[0][1][2] = 0;
-	matrix[0][2][1] = 0;
-	matrix[0][2][2] = 1;
+	t_matrix	m;
+
+	m = mtx_new(3, 3);
+	m.elem[0][0] = cos(radian);
+	m.elem[0][1] = -sin(radian);
+	m.elem[0][2] = 0;
+	m.elem[1][0] = sin(radian);
+	m.elem[1][1] = cos(radian);
+	m.elem[1][2] = 0;
+	m.elem[2][0] = 0;
+	m.elem[2][1] = 0;
+	m.elem[2][2] = 1;
+	return (m);
 }
