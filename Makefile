@@ -10,8 +10,8 @@ LIBFT		=	./include/libft/
 SRCS_GRAPH	=	fp_graphical_init.c fp_graphical_end.c fp_putpixel.c
 SRCS_GRAPH	+=	fp_butterfly.c fp_find_center.c fp_rect.c fp_putvertice.c
 SRCS_GRAPH	+=	fp_isometric.c fp_putline.c fp_putrect.c
-SRCS_GRAPH	+=	fp_set_all.c fp_new_frame.c mtx_apply3.c mtx_rotate.c
-SRCS_GRAPH	+=	mtx_identity.c
+SRCS_GRAPH	+=	fp_set_all.c fp_new_frame.c
+SRCS_MTX	=	mtx_rotate.c mtx_identity.c mtx_apply.c mtx_multiply.c
 SRCS_FDF	=	fdf_read_map.c fdf_draw_map.c
 
 SRCS_ALL	+=	$(addprefix graphics/,$(SRCS_GRAPH))
