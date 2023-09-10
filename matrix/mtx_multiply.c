@@ -17,28 +17,23 @@ t_matrix	mtx_multiply(const t_matrix a, const t_matrix b)
 	t_matrix	c;
 	int			i;
 	int			j;
-	int			x;
-	int			y;
+	int			k;
 
 	i = -1;
-	if (a.row != b.col)
+	if (a.col != b.row)
 		return (mtx_null());
-	c = mtx_new(a.row, b.col);
-	while (++i < c.size)
+	c = mtx_new(b.col, a.row);
+	while (++i < b.col)
 	{
 		j = -1;
-		while (++j < c.row)
+		while (++j < b.row)
 		{
-			x = i / c.col;
-			y = i % c.col;
-			c.elem[x][y] += a.elem[x][j] * b.elem[j][y];
-			if (j == 0)
-				fp_printf("C(%i, %i) = ", i / c.col, i % c.col);
-			fp_printf("A(%i, %i) * B(%i, %i)", x, j, j, y);
-			if (j != c.col - 1)
-				fp_printf(" + ");
+			k = -1;
+			while (++k < b.col)
+			{
+				c.elem[i][j] += a.elem[i][k] * b.elem[k][j];
+			}
 		}
-		fp_printf("\n");
 	}
 	return (c);
 }

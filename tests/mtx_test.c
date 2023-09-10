@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 	mtx_fill(&b, argv[2]);
 	mtx_print(a);
 	mtx_print(b);
-	c = mtx_multiply(a, b);
+	c = mtx_multiply(b, a);
 	fp_printf("=\n");
 	mtx_print(c);
 	mtx_free(a);
