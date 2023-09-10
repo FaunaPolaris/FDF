@@ -3,6 +3,12 @@
 Graphical library for opening and drawing on a window, using the minilibx as a base for simplicity, the library was initially developed with the FDF project of the 42 school in mind, but focused on modularity and versatility for working with vectors.  
 
 Version history
+- 0.4.2 (back to the matrix);  
+	- new functions:  
+		matrix/  
+		- mtx_fromv;  
+		- mtx_tovec;  
+		- mtx_rotate;  
 - 0.4.1 (lerping)  
 	- new function:  
 		graphics/  

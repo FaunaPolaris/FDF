@@ -4,25 +4,27 @@ int	main(int argc, char **argv)
 {
 	t_matrix	a;
 	t_matrix	b;
-	t_matrix	c;
+	t_matrix	aux;
 	t_vector	v;
 
-	v.x = argv[1][0] - 48;
-	v.y = argv[1][2] - 48;
-	v.z = argv[1][4] - 48;
-
-	if (argc != 3)
+	a = mtx_new(3, 3);
+	aux = mtx_new(1, 3);
+	if (mtx_fill(&a, argv[1]) || mtx_fill(&aux, argv[2]) || argc != 3)
+	{
+		fp_printf("Invalid input\n");
+		mtx_free(a);
+		mtx_free(aux);
 		return (1);
-	a = mtx_fromv(v, 1);
-	b = mtx_new(3, 3);
-	mtx_fill(&b, argv[2]);
+	}
+	v = mtx_tovec(aux);
+	mtx_free(aux);
+	b = mtx_fromv(v, 1);
 	mtx_print(a);
 	mtx_print(b);
-	c = mtx_multiply(b, a);
-	fp_printf("=\n");
-	mtx_print(c);
+	aux = mtx_multiply(a, b);
+	mtx_print(aux);
 	mtx_free(a);
 	mtx_free(b);
-	mtx_free(c);
+	mtx_free(aux);
 	return (0);
 }

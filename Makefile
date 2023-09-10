@@ -12,7 +12,7 @@ SRCS_GRAPH	+=	fp_butterfly.c fp_find_center.c fp_rect.c fp_putvertice.c
 SRCS_GRAPH	+=	fp_isometric.c fp_putline.c fp_lerp.c
 SRCS_GRAPH	+=	fp_set_all.c fp_new_frame.c
 SRCS_MTX	=	mtx_identity.c mtx_multiply.c mtx_new.c mtx_fill.c mtx_null.c
-SRCS_MTX	+=	mtx_print.c mtx_fromv.c
+SRCS_MTX	+=	mtx_print.c mtx_fromv.c mtx_tovec.c
 
 SRCS_ALL	+=	$(addprefix graphics/,$(SRCS_GRAPH))
 SRCS_ALL	+=	$(addprefix fdf_src/,$(SRCS_FDF))

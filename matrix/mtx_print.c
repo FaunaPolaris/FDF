@@ -13,8 +13,10 @@ void	mtx_print(t_matrix m)
 	{
 	 	x = i % m.col;
 		y = i / m.col;
-		if (x < m.col && y < m.row)
+		if (x < m.col && y < m.row && m.col < m.row)
 			fp_printf("%5i", (int)m.elem[x][y]);
+		else if (y < m.col && x < m.row)
+			fp_printf("%5i", (int)m.elem[y][x]);
 		if (x == m.col - 1)
 			fp_printf("\n");
 	}

@@ -21,17 +21,20 @@ t_matrix	mtx_multiply(const t_matrix a, const t_matrix b)
 
 	i = -1;
 	if (a.col != b.row)
+	{
+		fp_printf("Invalid Operation\n");
 		return (mtx_null());
+	}
 	c = mtx_new(b.col, a.row);
-	while (++i < b.col)
+	while (++i < a.row)
 	{
 		j = -1;
-		while (++j < b.row)
+		while (++j < b.col)
 		{
 			k = -1;
-			while (++k < b.col)
+			while (++k < a.row)
 			{
-				c.elem[i][j] += a.elem[i][k] * b.elem[k][j];
+				c.elem[j][i] += a.elem[i][k] * b.elem[j][k];
 			}
 		}
 	}

@@ -24,4 +24,5 @@ void	mtx_free(t_matrix m)
 	i = -1;
 	while (++i < m.col)
 		free(m.elem[i]);
+	free(m.elem);
 }
