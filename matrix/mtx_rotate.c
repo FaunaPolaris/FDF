@@ -1,15 +1,15 @@
 #include "libgraph.h"
 
-static void	st_rotx(double angle, double (*matrix)[3][3]);
-static void	st_roty(double angle, double (*matrix)[3][3]);
-static void	st_rotz(double angle, double (*matrix)[3][3]);
+static t_matrix	st_rotx(double radian);
+static t_matrix	st_roty(double radian);
+static t_matrix	st_rotz(double radian);
 
 t_matrix	mtx_rotate(char axes, double angle)
 {
 	double	radian;
 
 	if (angle > 380)
-		angle -= 380
+		angle -= 380;
 	radian = angle * (M_PI / 180);
 	if (axes == 'x')
 		return (st_rotx(radian));
@@ -17,7 +17,7 @@ t_matrix	mtx_rotate(char axes, double angle)
 		return (st_roty(radian));
 	if (axes == 'z')
 		return (st_rotz(radian));
-	return (mtx_null)
+	return (mtx_null());
 }
 
 static t_matrix	st_rotx(double radian)

@@ -7,16 +7,16 @@ MATH_LINK	=	-lm
 LIBFT_LINK	=	-I./include/libft/header -L $(LIBFT) -lft
 LIBFT		=	./include/libft/
 
-SRCS_GRAPH	=	fp_graphical_init.c fp_graphical_end.c fp_putpixel.c
-SRCS_GRAPH	+=	fp_butterfly.c fp_find_center.c fp_rect.c fp_putvertice.c
-SRCS_GRAPH	+=	fp_isometric.c fp_putline.c fp_lerp.c
-SRCS_GRAPH	+=	fp_set_all.c fp_new_frame.c
-SRCS_MTX	=	mtx_identity.c mtx_multiply.c mtx_new.c mtx_fill.c mtx_null.c
-SRCS_MTX	+=	mtx_print.c mtx_fromv.c mtx_tovec.c
+SRCS_GRAPH	=	graphics_init.c graphics_end.c
+SRCS_DRAW	=	butterfly.c circle.c cube.c update.c plane.c
+SRCS_DRAW	+=	fill.c line.c pixel.c point.c square.c
+SRCS_MTX	=	new.c identity.c fromv.c rotate.c tovec.c centerv.c
+SRCS_MTX	+=	multiply.c fill.c print.c isometry.c
+SRCS_MTX	+=	null.c
 
-SRCS_ALL	+=	$(addprefix graphics/,$(SRCS_GRAPH))
-SRCS_ALL	+=	$(addprefix fdf_src/,$(SRCS_FDF))
-SRCS_ALL	+=	$(addprefix matrix/,$(SRCS_MTX))
+SRCS_ALL	=	$(addprefix graphics/,$(SRCS_GRAPH))
+SRCS_ALL	+=	$(addprefix graphics/draw_,$(SRCS_DRAW))
+SRCS_ALL	+=	$(addprefix matrix/mtx_,$(SRCS_MTX))
 
 ANSI		=	\033[0
 BOLD		=	;1
@@ -26,8 +26,10 @@ CYAN		=	;36
 
 TMAIN_MTX	=	tests/mtx_test.c
 TMAIN_LERP	=	tests/lerp_test.c
+TMAIN_TOOL	=	tests/tool_test.c
+TMAIN_FORM	=	tests/formulas_test.c
 
-all: libft $(NAME) cube formulas
+all: libft $(NAME) formulas
 
 $(NAME):
 	@echo
@@ -38,7 +40,7 @@ $(NAME):
 libft: 
 	@make -C $(LIBFT)
 
-tests: libft mtx_test lerp_test
+tests: libft mtx_test lerp_test tool_test
 
 formulas:
 	@$(CC) $(C_FLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_FORM) -o $@ $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
@@ -56,9 +58,9 @@ lerp_test:
 	@$(CC) $(C_FLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_LERP) -o $@ $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
 	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s$(ANSI)m\n" "lerp_test" "Compiled"
 
-cube:
-	@$(CC) $(C_FLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_CUBE) -o $@ $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
-	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s$(ANSI)m\n" "Cube" "Compiled"
+tool_test:
+	@$(CC) $(C_FLAGS) $(SRCS_ALL) $(HEADER) $(TMAIN_TOOL) -o $@ $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
+	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s$(ANSI)m\n" "tool_test" "Compiled"
 
 clean:
 	@echo
@@ -68,6 +70,7 @@ clean:
 clean_tests:
 	@rm -rf mtx_test
 	@rm -rf lerp_test
+	@rm -rf tool_test
 	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "Tests" "Cleaned"
 
 fclean: clean clean_tests

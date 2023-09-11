@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_find_center.c                                   :+:      :+:    :+:   */
+/*   fp_putpixel.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/09 08:55:53 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/08/15 12:06:09 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/08/08 18:49:51 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/08/23 17:39:04 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libgraph.h"
 
-t_vector	fp_find_center(void)
+void	draw_pixel(t_mlx *data, int x, int y, int color)
 {
-	t_vector	output;
+	char	*position;
 
-	output.x = WIDTH / 2;
-	output.y = HEIGHT / 2;
-	output.z = 1;
-	return(output);
+	if (x > WIDTH || y > HEIGHT)
+		return ;
+	if (x < 0 || y < 0)
+		return ;
+	y = -y + HEIGHT;
+	position = data->img->addr + (y * data->img->line
+			+ (x * data->img->bits / 8));
+	*(unsigned int *)position  = color;
 }

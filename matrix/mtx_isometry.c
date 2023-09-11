@@ -12,7 +12,7 @@
 
 #include "libgraph.h"
 
-t_vector	fp_isometric(const t_vector vertx)
+t_vector	mtx_isometry(const t_vector vertx)
 {
 	t_vector	output;
 

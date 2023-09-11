@@ -21,12 +21,15 @@ typedef struct s_matrix
 t_matrix	mtx_new(int col, int row);
 t_matrix	mtx_identity(int size);
 t_matrix	mtx_fromv(t_vector v, int col);
-t_vector	mtx_tovec(t_matrix m);
 t_matrix	mtx_rotate(char axes, double angle);
+t_vector	mtx_tovec(t_matrix m);
+t_vector	mtx_centerv(void);
 
 t_matrix	mtx_multiply(const t_matrix a, const t_matrix b);
 int		mtx_fill(t_matrix *m, char *content);
 void		mtx_print(t_matrix m);
+
+t_vector	mtx_isometry(const t_vector vertx);
 
 void		mtx_free(t_matrix m);
 t_matrix	mtx_null(void);

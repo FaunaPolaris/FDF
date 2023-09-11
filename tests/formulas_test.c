@@ -7,9 +7,9 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (1);
-	if (fp_graphical_init("Formula Projection", &data))
+	if (graphics_init("Formula Projection", &data))
 		return (1);
 	if (argv[1][0] == 'B')
-		fp_butterfly(&data, fp_find_center());
-	fp_graphical_end(&data);
+		draw_butterfly(&data, mtx_centerv());
+	graphics_end(&data);
 }

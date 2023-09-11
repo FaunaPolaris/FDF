@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fp_set_all.c                                       :+:      :+:    :+:   */
+/*   fp_find_center.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 10:14:26 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/08/21 10:17:52 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/08/09 08:55:53 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/08/15 12:06:09 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libgraph.h"
 
-void	fp_set_all(t_mlx *data, int color)
+t_vector	mtx_centerv(void)
 {
-	int	x;
-	int	y;
+	t_vector	output;
 
-	x = 0;
-	while (x < WIDTH)
-	{
-		y = 0;
-		while (y < HEIGHT)
-		{
-			fp_putpixel(data, x, y, color);
-			y++;
-		}
-		x++;
-	}
+	output.x = WIDTH / 2;
+	output.y = HEIGHT / 2;
+	output.z = 1;
+	return(output);
 }

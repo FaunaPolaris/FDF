@@ -12,7 +12,7 @@
 
 #include "libgraph.h"
 
-int	fp_graphical_init(char *title, t_mlx *mlx_data)
+int	graphics_init(char *title, t_mlx *mlx_data)
 {
 	t_img_data	*img_data;
 

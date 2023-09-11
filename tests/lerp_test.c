@@ -8,7 +8,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 3)
 		return (1);
-	if (fp_graphical_init("lerp", &mlx))
+	if (graphics_init("lerp", &mlx))
 		return (1);
 	v.x = argv[0][0];
 	v.y = argv[0][2];
@@ -18,8 +18,8 @@ int	main(int argc, char **argv)
 	c.z = argv[1][4];
 	v.color = 0xFF0000;
 	c.color = 0x00FF00;
-	fp_putline(&mlx, v, c);
+	draw_line(&mlx, v, c);
 	mlx_put_image_to_window(mlx.mlx, mlx.window, mlx.img->img,
 			0, 0);
-	fp_graphical_end(&mlx);
+	graphics_end(&mlx);
 }

@@ -2,7 +2,34 @@
 
 Graphical library for opening and drawing on a window, using the minilibx as a base for simplicity, the library was initially developed with the FDF project of the 42 school in mind, but focused on modularity and versatility for working with vectors.  
 
-Version history
+Version history 
+- 0.4.3 (artisian tools);  
+	- moved functions:  
+		to libft:  
+		- fp_lerp;
+		- fp_lerpcolor;  
+		from graphics to matrix:  
+		- fp_isometric -> mtx_isometry;  
+		- fp_unit_vector -> mtx_unitv;  
+		- fp_find_center -> mtx_centerv;  
+	- renamed functions:  
+		- fp_graphical_init -> graphics_init;  
+		- fp_graphical_end -> graphics_end;  
+		- fp_butterfly -> draw_butterfly;  
+		- fp_set_all -> draw_clean;  
+	- new functions:  
+		graphics/ 
+		- draw_pixel; 
+		- draw_point	
+		- draw_line;
+		- draw_square;
+		- draw_cube;	
+		- draw_circle;  
+		- draw_fill;  
+		- draw_erase;
+		- draw_update;
+	- new tests:  
+		- tool_test; 
 - 0.4.2 (back to the matrix);  
 	- new functions:  
 		matrix/  
@@ -20,7 +47,7 @@ Version history
 		- lerp_test;  
 - 0.4.0 (matrix)  
 	- new header:  
-		- matrix.h; 
+		- matrix.h;   
 	matrix functions:  
 		- mtx_new;  
 		- mtx_identity;  
@@ -28,14 +55,14 @@ Version history
 		- mtx_fill;  
 		- mtx_print;  
 		- mtx_free;  
-		- mtx_null;
+		- mtx_null;  
 	new test:  
 		- mtx_test;  
 	OBS: ALL OTHER TESTS REMOVED;  
 - 0.3.6 (rotation)  
 	- new functions:  
 		/graphics  
-		- mtx_multiply3d; 
+		- mtx_multiply3d;   
 		- mtx_identity3;  
 	- changed functions:  
 		- fdf_draw_map;  
@@ -43,25 +70,25 @@ Version history
 	- new functions:  
 		/graphics  
 		- fp_applymatrix;  
-		- mtx_rotate; 
+		- mtx_rotate;   
 	- new tests:  
 		- loop_rotate;   
-- 0.3.4 (wireframe)
+- 0.3.4 (wireframe)  
 	- fused functions:  
 		- fdf_check_map + fdf_apply_depth:  
-		- = fdf_read_map;
+		- = fdf_read_map;  
 - 0.3.3 (wireframe)  
 	- changed functions:  
 		- fp_putline;  
 		- fp_isometric;  
 	- new test:  
-		- map_test; 
+		- map_test;   
 	- new MACROS:  
 		- PRECISION;  
-		- HGHT_SCL; 
+		- HGHT_SCL;   
 	- .PHONY += tests clean_tests re_tests;   
 - 0.3.2 (wireframe)  
-	- new functions:
+	- new functions:  
 		/fdf  
 		- fdf_check_map;  
 		- fdf_apply_depth;  
@@ -73,7 +100,7 @@ Version history
 		/fdf.h  
 		- t_fdfdata;  
 		/libgraph.h  
-		- t_wireframe + (int)color;
+		- t_wireframe + (int)color;  
 	- new tests:  
 		- map_test;  
 		- draw_test;  

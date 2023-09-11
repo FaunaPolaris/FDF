@@ -23,18 +23,6 @@
 # define HEIGHT 720
 
 # define PRECISION 0.001
-# define HGHT_SCL 1
-# define SCALE 4
-
-typedef struct s_wireframe
-{
-	t_vector	vertice;
-	int		color;
-	struct s_wireframe	*xplus;
-	struct s_wireframe	*xmins;
-	struct s_wireframe	*yplus;
-	struct s_wireframe	*ymins;
-}	t_wireframe;
 
 typedef struct s_img_data
 {
@@ -52,23 +40,21 @@ typedef struct s_mlx
 	t_img_data	*img;
 }	t_mlx;
 
-int	fp_graphical_init(char *title, t_mlx *data);
-void	fp_graphical_end(t_mlx *data);
+int	graphics_init(char *title, t_mlx *data);
+void	graphics_end(t_mlx *data);
 
-t_wireframe	**fp_new_frame(int max_x, int max_y);
-void		fp_erase_frame(t_wireframe **grid, int max_x);
+void	draw_pixel(t_mlx *data, int x, int y, int color);
+void	draw_point(t_mlx *data, t_vector vertx, int color);
+void	draw_line(t_mlx *data, t_vector point_a, t_vector point_b);
+void	draw_square(t_mlx *data, t_vector topl, t_vector botr, int fill);
+void	draw_cube(t_mlx *data, t_vector start, t_vector end,
+		t_vector (*pers) (const t_vector));
+void	draw_plane(t_mlx *data, t_vector start, t_vector end,
+		t_vector (*pers) (const t_vector));
+void	draw_circle(t_mlx *data, t_vector center, int radius, int color);
+void	draw_butterfly(t_mlx *data, t_vector center);
+void	draw_fill(t_mlx *data, t_vector start, t_vector end, int color);
+void	draw_update(t_mlx *data);
 
-void	fp_putpixel(t_mlx *data, int x, int y, int color);
-void	fp_putvertice(t_mlx *data, t_vector *vertx, int quantity, int color);
-void	fp_putline(t_mlx *data, t_vector point_a, t_vector point_b);
-
-t_vector	*fp_rect(int width, int height, int depth);
-
-void	fp_set_all(t_mlx *data, int color);
-
-t_vector	fp_isometric(const t_vector vertx);
-t_vector	fp_find_center(void);
-double		fp_lerp(double v1, double v2, double t);
-int		fp_lerpcolor(int color1, int color2, double t);
 
 #endif
