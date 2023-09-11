@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   matrix.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/11 14:32:08 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/09/11 19:31:26 by fpolaris         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MATRIX_H
 # define MATRIX_H
 
@@ -33,5 +45,6 @@ t_vector	mtx_isometry(const t_vector vertx);
 
 void		mtx_free(t_matrix m);
 t_matrix	mtx_null(void);
+void	mtx_nullv(t_vector *m);
 
 #endif

@@ -4,7 +4,9 @@ t_vector	mtx_tovec(t_matrix m)
 {
 	t_vector	v;
 
-
+	v.x = 0;
+	v.y = 0;
+	v.z = 0;
 	if (m.col == 1 && m.row == 3)
 	{
 		v.x = m.elem[0][0];
