@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 14:32:08 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/09/11 19:31:26 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/09/12 11:18:20 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ t_matrix	mtx_new(int col, int row);
 t_matrix	mtx_identity(int size);
 t_matrix	mtx_fromv(t_vector v, int col);
 t_matrix	mtx_rotate(char axes, double angle);
+t_vector	mtx_newv(double x, double y, double z, int color);
 t_vector	mtx_tovec(t_matrix m);
 t_vector	mtx_centerv(void);
 
