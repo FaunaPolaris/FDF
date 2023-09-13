@@ -39,17 +39,17 @@ static t_vector	st_sizes(char *src)
 	v.y = 0;
 	v.z = -1;
 	collums = fp_split(rows[(int)v.y], ' ');
-	v.x = fp_gridlen(collums);
-	while (++v.y < fp_gridlen(rows))
+	v.x = fp_grdlen(collums);
+	while (++v.y < fp_grdlen(rows))
 	{
-		if (fp_gridlen(collums) > v.x)
+		if (fp_grdlen(collums) > v.x)
 			return (v);
-		fp_free_grid(collums);
+		fp_grdfre(collums);
 		collums = fp_split(rows[(int)v.y], ' ');
 	}
-	fp_free_grid(rows);
+	fp_grdfre(rows);
 	if (collums)
-		fp_free_grid(collums);
+		fp_grdfre(collums);
 	v.z = 0;
 	return (v);
 }
@@ -76,7 +76,7 @@ static t_vector	**st_fill(t_vector **map, char **src, int col, int row)
 
 	i = -1;
 	scale = st_find_scale(col, row);
-	size = fp_gridlen(src);
+	size = fp_grdlen(src);
 	while (++i < col * row)
 	{
 		x = i % col;
@@ -88,7 +88,7 @@ static t_vector	**st_fill(t_vector **map, char **src, int col, int row)
 		if (fp_strchr(src[i], ','))
 			map[x][y].color = fp_atox(fp_strchr(src[i], ','));
 	}
-	fp_free_grid(src);
+	fp_grdfre(src);
 	return(map);
 }
 

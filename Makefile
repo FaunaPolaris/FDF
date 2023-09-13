@@ -13,7 +13,6 @@ SRCS_DRAW	+=	fill.c line.c pixel.c point.c square.c
 SRCS_MTX	=	new.c identity.c fromv.c rotate.c tovec.c centerv.c
 SRCS_MTX	+=	multiply.c fill.c print.c isometry.c
 SRCS_MTX	+=	null.c nullv.c newv.c
-SRCS_FDF	=	fdf_draw_map.c fdf_create_map.c
 
 SRCS_ALL	=	$(addprefix graphics/,$(SRCS_GRAPH))
 SRCS_ALL	+=	$(addprefix graphics/draw_,$(SRCS_DRAW))

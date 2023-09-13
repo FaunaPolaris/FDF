@@ -19,15 +19,15 @@ Version history
 		- fp_set_all -> draw_clean;  
 	- new functions:  
 		graphics/ 
-		- draw_pixel; 
+		- draw_pixel;   
 		- draw_point	
-		- draw_line;
-		- draw_square;
+		- draw_line;  
+		- draw_square;  
+		- draw_plane;  
 		- draw_cube;	
 		- draw_circle;  
 		- draw_fill;  
-		- draw_erase;
-		- draw_update;
+		- draw_update;  
 	- new tests:  
 		- tool_test; 
 - 0.4.2 (back to the matrix);  

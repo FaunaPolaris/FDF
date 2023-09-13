@@ -53,8 +53,8 @@ static void	st_core(t_mlx *data, char *line)
 	i = -1;
 	while (++i < st_len(map))
 	{
-		x = i / fp_gridlen(map[0]);
-		y = i % fp_gridlen(map[0]);
+		x = i / fp_grdlen(map[0]);
+		y = i % fp_grdlen(map[0]);
 		vv[0] = mtx_newv(fx(x, data), fy(y, data),
 			fp_atoi(map[x][y]),
 			fp_atox(fp_strchr(map[x][y], ',')));
@@ -104,6 +104,6 @@ static int	st_len(char ***map)
 	i = -1;
 	output = 0;
 	while (map[++i])
-		output += fp_gridlen(map[i]);
+		output += fp_grdlen(map[i]);
 	return (output);
 }

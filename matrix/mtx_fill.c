@@ -10,7 +10,7 @@ int	mtx_fill(t_matrix *m, char *content)
 	char	**split;
 
 	split = fp_split(content, ' ');
-	if (fp_gridlen(split) != m->size)
+	if (fp_grdlen(split) != m->size)
 		return (st_free(split));
 	i = -1;
 	while (++i < m->size)

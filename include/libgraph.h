@@ -58,5 +58,4 @@ void	draw_butterfly(t_mlx *data, t_vector center);
 void	draw_fill(t_mlx *data, t_vector start, t_vector end, int color);
 void	draw_update(t_mlx *data);
 
-
 #endif
