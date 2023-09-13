@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:00:36 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/09/12 12:29:28 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/09/13 11:49:41 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,5 @@ int	graphics_init(char *title, t_mlx *mlx_data)
 				img_data->img,&img_data->bits,
 				&img_data->line, &img_data->endian);
 	mlx_data->img = img_data;
-	mlx_data->ofx = WIDTH / 2;
-	mlx_data->ofy = HEIGHT / 2;
 	return (0);
 }

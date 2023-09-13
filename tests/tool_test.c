@@ -16,7 +16,7 @@ int	main(void)
 	aux.x -= 100;
 	aux.y -= 100;
 	aux.z -= 100;
-	draw_cube(&data, center, aux, mtx_isometry);
+	draw_cube(&data, center, aux, mtx_iso);
 	usleep(1000 * 5000);
 	graphics_end(&data);
 }

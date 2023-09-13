@@ -6,23 +6,22 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 14:35:20 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/09/12 17:33:10 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/09/13 19:59:42 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	st_core(t_mlx *data, char *line);
-static int	st_len(char ***map);
-static int	fx(int n, t_mlx *data);
-static int	fy(int n, t_mlx *data);
-//static int	st_gridheight(char ***grid);
+static void	st_core(t_mlx *data, char ***map);
+static t_vector	pers(t_mlx *data, t_vector v);
+static void	st_draw(t_mlx *data, t_vector start, t_ivector iv, char ***map);
 
 int	main(int argc, char **argv)
 {
-	t_mlx	data;
-	int		fd;
-	char	*line;
+	t_mlx		data;
+	char	***map;
+	char		*line;
+	int				fd;
 
 	if (argc != 2 || !fp_strnstr(argv[1], ".fdf", fp_strlen(argv[1])))
 		return (1);
@@ -34,76 +33,86 @@ int	main(int argc, char **argv)
 	line = fp_read_all(fd);
 	if (!line)
 		return (1);
-	st_core(&data, line);
+	map = fp_splitsplit(line, '\n', ' ');
+	data.max_x = fp_grdlen(map[0]);
+	data.max_y = fp_chrcnt(line, '\n');
+	st_core(&data, map);
 	free(line);
+	fp_grdfre3(map);
 	close(fd);
 	graphics_end(&data);
 	return (0);
 }
 
-static void	st_core(t_mlx *data, char *line)
+static void	st_core(t_mlx *data, char ***map)
 {
-	char	***map;
-	t_vector	vv[2];
+	t_vector	v;
+	t_ivector	iv;
 	int		i;
-	int		x;
-	int		y;
 
-	map = fp_splitsplit(line, '\n', ' ');
 	i = -1;
-	while (++i < st_len(map))
+	while (++i < data->max_x * data->max_y)
 	{
-		x = i / fp_grdlen(map[0]);
-		y = i % fp_grdlen(map[0]);
-		vv[0] = mtx_newv(fx(x, data), fy(y, data),
-			fp_atoi(map[x][y]),
-			fp_atox(fp_strchr(map[x][y], ',')));
-		if (map[x][y + 1])
+		iv.y = i / data->max_x;
+		iv.x = i % data->max_x;
+		v = mtx_newv(iv.y, iv.x, fp_atoi(map[iv.y][iv.x]),
+				fp_atox(fp_strnxt(map[iv.y][iv.x], ',')));
+		if (v.x != data->max_x - 1)
 		{
-			vv[1] = mtx_newv(fx(x, data), fy(y + 1, data),
-				fp_atoi(map[x][y + 1]),
-				fp_atox(fp_strchr(map[x][y + 1], ',')));
-			draw_line(data, vv[0], vv[1]);
+			iv.z = 1;
+			st_draw(data, v, iv, map);
 		}
-		if (map[x + 1])
+		if (v.y != data->max_y - 1)
 		{
-			vv[1] = mtx_newv(fx(x + 1, data), fy(y, data),
-				fp_atoi(map[x + 1][y]),
-				fp_atox(fp_strchr(map[x + 1][y], ',')));
-			draw_line(data, vv[0], vv[1]);
+			iv.z = -1;
+			st_draw(data, v, iv, map);
 		}
 	}
+	draw_update(data);
 	usleep(10000 * 500);
 }
-/*
-static int	st_gridheight(char ***grid)
-{
-	int	i;
 
-	i = -1;
-	while (grid[++i])
-		;
-	return (i);
-}
-*/
-static int	fx(int n, t_mlx *data)
+static void	st_draw(t_mlx *data, t_vector start, t_ivector iv, char ***map)
 {
-	return ((n * 20) + data->ofx);
-}
+	t_vector	end;
 
-static int	fy(int n, t_mlx *data)
-{
-	return ((n * 20) + data->ofy);
+	if (iv.z == 1)
+		iv.x++;
+	if (iv.z == -1)
+		iv.y++;
+	end = mtx_newv(iv.y, iv.x, fp_atoi(map[iv.y][iv.x]),
+			fp_atox(fp_strnxt(map[iv.y][iv.x], ',')));
+	draw_line(data, pers(data, start), pers(data, end));
+	if (iv.z == 1)
+		iv.x--;
+	if (iv.z == -1)
+		iv.y--;
 }
 
-static int	st_len(char ***map)
+static t_vector	pers(t_mlx *data, t_vector v)
 {
-	int	i;
-	int	output;
+	float	scalex;
+	float	scaley;
+	float	hypo;
 
-	i = -1;
-	output = 0;
-	while (map[++i])
-		output += fp_grdlen(map[i]);
-	return (output);
+	hypo = (sqrt(pow(data->max_x, 2)) + pow(data->max_y, 2));
+	scalex = (((WIDTH * data->max_x)) / hypo);
+	scaley = (((HEIGHT * data->max_y)) / hypo);
+	if (data->max_x > data->max_y && data->max_x > 40)
+		scalex /= (data->max_x / 40);
+	if (scalex < scaley)
+	{
+		v.x *= scalex;
+		v.y *= scalex;
+	}
+	else
+	{
+		v.x *= scaley;
+		v.y *= scaley;
+	}
+	v.z *= .7;
+	v = mtx_iso(v);
+	v.x += (WIDTH) * .5;
+	v.y += HEIGHT;
+	return (v);
 }

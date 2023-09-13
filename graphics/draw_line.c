@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 08:06:13 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/09/07 18:47:13 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/09/13 10:40:40 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,4 @@ void	draw_line(t_mlx *data, t_vector point_a, t_vector point_b)
 		t = fp_lerpcolor(point_a.color, point_b.color, t);
 		draw_pixel(data, x, y, t);
 	}
-	draw_update(data);
 }

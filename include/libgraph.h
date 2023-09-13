@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 12:42:48 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/09/12 12:28:47 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/09/13 11:49:25 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ typedef struct s_mlx
 {
 	void	*mlx;
 	void	*window;
-	int	ofx;
-	int	ofy;
+	int	max_x;
+	int	max_y;
 	t_img_data	*img;
 }	t_mlx;
 
