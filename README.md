@@ -3,6 +3,17 @@
 Graphical library for opening and drawing on a window, using the minilibx as a base for simplicity, the library was initially developed with the FDF project of the 42 school in mind, but focused on modularity and versatility for working with vectors.  
 
 Version history 
+- 0.4.4 (math order);  
+	- renamed functions:  
+		- mtx_tovec;	-> vec_from_mtx;  
+		- mtx_centerv	-> vec_center;  
+		- mtx_newv	-> vec_new;  
+		- mtx_isometry	-> vec_isometry; 
+	- additions:   
+		matrix.h:  
+		- t_constants {double, double};  
+		- mtx_init;  
+		
 - 0.4.3 (artisian tools);  
 	- moved functions:  
 		to libft:  

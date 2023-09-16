@@ -8,7 +8,7 @@ int	main(void)
 
 	if (graphics_init("tool", &data))
 		return (1);
-	center = mtx_centerv();
+	center = vec_center();
 	center.color = 0x00AA22;
 	aux = center;
 	fp_printf("starting tests...\n");
@@ -16,7 +16,8 @@ int	main(void)
 	aux.x -= 100;
 	aux.y -= 100;
 	aux.z -= 100;
-	draw_cube(&data, center, aux, mtx_iso);
+	aux.color = 0x00AA22;
+	draw_cube(&data, center, aux, vec_isometry);
 	usleep(1000 * 5000);
 	graphics_end(&data);
 }

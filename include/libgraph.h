@@ -39,6 +39,7 @@ typedef struct s_mlx
 	void	*window;
 	int	max_x;
 	int	max_y;
+	t_constants	*mtx;
 	t_img_data	*img;
 }	t_mlx;
 
@@ -50,9 +51,9 @@ void	draw_point(t_mlx *data, t_vector vertx, int color);
 void	draw_line(t_mlx *data, t_vector point_a, t_vector point_b);
 void	draw_square(t_mlx *data, t_vector topl, t_vector botr, int fill);
 void	draw_cube(t_mlx *data, t_vector start, t_vector end,
-		t_vector (*pers) (const t_vector));
+		t_vector (*pers) (t_constants *, const t_vector));
 void	draw_plane(t_mlx *data, t_vector start, t_vector end,
-		t_vector (*pers) (const t_vector));
+		t_vector (*pers) (t_constants *, const t_vector));
 void	draw_circle(t_mlx *data, t_vector center, int radius, int color);
 void	draw_butterfly(t_mlx *data, t_vector center);
 void	draw_fill(t_mlx *data, t_vector start, t_vector end, int color);

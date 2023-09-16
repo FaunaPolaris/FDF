@@ -16,9 +16,9 @@ int	main(int argc, char **argv)
 		mtx_free(aux);
 		return (1);
 	}
-	v = mtx_tovec(aux);
+	v = vec_from_mtx(aux);
 	mtx_free(aux);
-	b = mtx_fromv(v, 1);
+	b = mtx_from_vec(v, 1);
 	mtx_print(a);
 	mtx_print(b);
 	aux = mtx_multiply(a, b);

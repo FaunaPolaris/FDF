@@ -1,6 +1,6 @@
 #include "libgraph.h"
 
-t_vector	mtx_tovec(t_matrix m)
+t_vector	vec_from_mtx(t_matrix m)
 {
 	t_vector	v;
 

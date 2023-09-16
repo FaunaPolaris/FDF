@@ -10,6 +10,6 @@ int	main(int argc, char **argv)
 	if (graphics_init("Formula Projection", &data))
 		return (1);
 	if (argv[1][0] == 'B')
-		draw_butterfly(&data, mtx_centerv());
+		draw_butterfly(&data, vec_center());
 	graphics_end(&data);
 }

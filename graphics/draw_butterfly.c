@@ -12,13 +12,13 @@ void	draw_butterfly(t_mlx *data, t_vector center)
 		{
 			draw_pixel(data, BUTTERFLY_X(i) + center.x,
 				BUTTERFLY_Y(i) + center.y,
-				RED + BUTTERFLY_X(i));
+				fp_lerpcolor(RED, BLUE, i));
 		}
 		else
 		{
 			draw_pixel(data, BUTTERFLY_X(i) + center.x,
 				BUTTERFLY_Y(i) + center.y,
-				RED + (BUTTERFLY_X(i) * -1));
+				fp_lerpcolor(RED, BLUE, i));
 		}
 		mlx_put_image_to_window(data->mlx,
 			data->window, data->img->img, 0, 0);

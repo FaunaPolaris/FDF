@@ -1,6 +1,6 @@
 #include "libgraph.h"
 
-t_matrix	mtx_fromv(t_vector source, int col)
+t_matrix	mtx_from_vec(t_vector source, int col)
 {
 	t_matrix	output;
 

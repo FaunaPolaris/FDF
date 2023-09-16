@@ -12,7 +12,7 @@
 
 #include "libgraph.h"
 
-t_vector	mtx_centerv(void)
+t_vector	vec_center(void)
 {
 	t_vector	output;
 

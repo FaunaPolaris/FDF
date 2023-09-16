@@ -1,37 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_draw_map.c                                     :+:      :+:    :+:   */
+/*   mtx_newv.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 15:53:18 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/09/11 17:18:45 by fpolaris         ###   ########.fr       */
+/*   Created: 2023/09/12 11:18:37 by fpolaris          #+#    #+#             */
+/*   Updated: 2023/09/13 12:11:24 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libgraph.h"
 
-void	fdf_draw_map(t_mlx *data, t_vector **map,
-		t_vector (*mtx) (const t_vector))
+t_vector	vec_new(double y, double x, double z, int color)
 {
-	int	i;
-	int	col;
-	int	x;
-	int	y;
+	static t_vector	output;
 
-	i = -1;
-	col = -1;
-	while (map[++col])
-		;
-	while (map[++i])
-	{
-		x = i / col;
-		y = i % col;
-		map[x][y] = mtx(map[x][y]);
-		if (x != 0)
-			draw_line(data, map[x][y], map[x - 1][y]);
-		if (y != 0)
-			draw_line(data, map[x][y], map[x][y - 1]);
-	}
+	output.y = y;
+	output.x = x;
+	output.z = z;
+	output.color = color;
+	return (output);
 }

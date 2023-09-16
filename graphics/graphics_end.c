@@ -19,4 +19,5 @@ void	graphics_end(t_mlx *data)
 	mlx_destroy_display(data->mlx);
 	free(data->img);
 	free(data->mlx);
+	free(data->mtx);
 }
