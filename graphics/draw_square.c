@@ -1,6 +1,6 @@
 #include "libgraph.h"
 
-void	draw_square(t_mlx *data, t_vector topl, t_vector botr, int fill)
+void	draw_square(t_window *win, t_vector topl, t_vector botr, int fill)
 {
 	t_vector	botl;
 	t_vector	topr;
@@ -11,11 +11,11 @@ void	draw_square(t_mlx *data, t_vector topl, t_vector botr, int fill)
 	topr.x = botr.x;
 	topr.y = topl.y;
 	topr.color = topl.color;
-	draw_line(data, topl, topr);
-	draw_line(data, topr, botr);
-	draw_line(data, botr, botl);
-	draw_line(data, botl, topl);
+	draw_line(win, topl, topr);
+	draw_line(win, topr, botr);
+	draw_line(win, botr, botl);
+	draw_line(win, botl, topl);
 	if (fill >= 0)
-		draw_fill(data, topl, botr, fill);
-	draw_update(data);
+		draw_fill(win, topl, botr, fill);
+	draw_update(win);
 }

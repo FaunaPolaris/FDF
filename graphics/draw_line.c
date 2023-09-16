@@ -12,7 +12,7 @@
 
 #include "libgraph.h"
 
-void	draw_line(t_mlx *data, t_vector point_a, t_vector point_b)
+void	draw_line(t_window *win, t_vector point_a, t_vector point_b)
 {
 	double	t;
 	int	x;
@@ -29,6 +29,6 @@ void	draw_line(t_mlx *data, t_vector point_a, t_vector point_b)
 		x = fp_ilerp(point_a.x, point_b.x, t);
 		y = fp_ilerp(point_a.y, point_b.y, t);
 		t = fp_lerpcolor(point_a.color, point_b.color, t);
-		draw_pixel(data, x, y, t);
+		draw_pixel(win, x, y, t);
 	}
 }

@@ -5,6 +5,12 @@ Graphical library for opening and drawing on a window, using the minilibx as a b
 Version history 
 - 0.5.0 (window managment);  
 	- graphics functions overhaul to open multiple windows;  
+		- deleted functions: graphics_init graphics_end;  
+		- new functions:
+			- win_new;  
+			- win_close;
+		- new program:  
+			- ./conway [width] [height] [cell_count]  
 - 0.4.4 (math order);  
 	- renamed functions:  
 		- mtx_tovec;	-> vec_from_mtx;  

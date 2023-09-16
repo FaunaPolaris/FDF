@@ -12,12 +12,12 @@
 
 #include "libgraph.h"
 
-t_vector	vec_isometry(t_constants *mtx, const t_vector vertx)
+t_vector	vec_isometry(const t_vector vertx)
 {
 	t_vector	output;
 
-	output.x = (vertx.x - vertx.y) * mtx->cos_p45;
+	output.x = (vertx.x - vertx.y) * g_mtx->cos_p45;
 	output.y = (-vertx.z + vertx.x + vertx.y)
-			* mtx->sin_n30;
+			* g_mtx->sin_n30;
 	return (output);
 }

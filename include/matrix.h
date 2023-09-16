@@ -20,6 +20,8 @@ typedef struct s_constants
 {
 	double	cos_p45;
 	double	sin_n30;
+	double	convert_to_radian;
+	int	chance;
 }	t_constants;
 
 typedef struct s_vector
@@ -45,6 +47,8 @@ typedef struct s_matrix
 	double	**elem;
 }	t_matrix;
 
+extern t_constants	*g_mtx;
+
 t_constants	*mtx_init(void);
 
 t_matrix	mtx_new(int col, int row);
@@ -60,7 +64,7 @@ t_matrix	mtx_multiply(const t_matrix a, const t_matrix b);
 int		mtx_fill(t_matrix *m, char *content);
 void		mtx_print(t_matrix m);
 
-t_vector	vec_isometry(t_constants *mtx, const t_vector v);
+t_vector	vec_isometry(const t_vector v);
 
 void		mtx_free(t_matrix m);
 t_matrix	mtx_null(void);
