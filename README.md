@@ -1,8 +1,10 @@
-# libgraph
+# graphics
 
 Graphical library for opening and drawing on a window, using the minilibx as a base for simplicity, the library was initially developed with the FDF project of the 42 school in mind, but focused on modularity and versatility for working with vectors.  
 
 Version history 
+- 0.5.0 (window managment);  
+	- graphics functions overhaul to open multiple windows;  
 - 0.4.4 (math order);  
 	- renamed functions:  
 		- mtx_tovec;	-> vec_from_mtx;  

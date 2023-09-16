@@ -37,8 +37,6 @@ typedef struct s_mlx
 {
 	void	*mlx;
 	void	*window;
-	int	max_x;
-	int	max_y;
 	t_constants	*mtx;
 	t_img_data	*img;
 }	t_mlx;
@@ -46,7 +44,7 @@ typedef struct s_mlx
 int	graphics_init(char *title, t_mlx *data);
 void	graphics_end(t_mlx *data);
 
-void	draw_pixel(t_mlx *data, int x, int y, int color);
+void	draw_pixel(t_img_data *img, int x, int y, int color);
 void	draw_point(t_mlx *data, t_vector vertx, int color);
 void	draw_line(t_mlx *data, t_vector point_a, t_vector point_b);
 void	draw_square(t_mlx *data, t_vector topl, t_vector botr, int fill);
@@ -58,5 +56,7 @@ void	draw_circle(t_mlx *data, t_vector center, int radius, int color);
 void	draw_butterfly(t_mlx *data, t_vector center);
 void	draw_fill(t_mlx *data, t_vector start, t_vector end, int color);
 void	draw_update(t_mlx *data);
+
+void	drac_pixel(t_img_data *img, int x, int y, int color);
 
 #endif

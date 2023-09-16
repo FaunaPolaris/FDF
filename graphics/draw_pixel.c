@@ -12,7 +12,19 @@
 
 #include "libgraph.h"
 
-void	draw_pixel(t_mlx *data, int x, int y, int color)
+void	draw_pixel(t_img_data *img, int x, int y, int color)
+{
+	char	*position;
+
+	if (x > WIDTH - 1 || y > HEIGHT - 1 || x < 0 || y < 0)
+		return ;
+	y = -y + HEIGHT;
+	position = img->addr + (y * img->line
+			+ (x * img->bits / 8));
+	*(unsigned int *)position  = color;
+}
+
+void	drac_pixel(t_img_data *img, int x, int y, int color)
 {
 	char	*position;
 
@@ -27,7 +39,7 @@ void	draw_pixel(t_mlx *data, int x, int y, int color)
 	if (x > WIDTH - 1 || y > HEIGHT - 1 || x < 0 || y < 0)
 		return ;
 	y = -y + HEIGHT;
-	position = data->img->addr + (y * data->img->line
-			+ (x * data->img->bits / 8));
+	position = img->addr + (y * img->line
+			+ (x * img->bits / 8));
 	*(unsigned int *)position  = color;
 }
