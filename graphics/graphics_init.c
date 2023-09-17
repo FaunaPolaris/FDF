@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:00:36 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/09/13 11:49:41 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/09/14 09:18:19 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 int	graphics_init(char *title, t_mlx *mlx_data)
 {
 	t_img_data	*img_data;
+	t_fdf		*fdf;
 
 	img_data = (t_img_data *)malloc(sizeof(t_img_data));
+	fdf = (t_fdf *)fp_calloc(1, sizeof(t_fdf));
 	mlx_data->mlx = mlx_init();
 	if (!mlx_data->mlx)
 		return (1);
@@ -27,6 +29,7 @@ int	graphics_init(char *title, t_mlx *mlx_data)
 	img_data->addr = mlx_get_data_addr(
 				img_data->img,&img_data->bits,
 				&img_data->line, &img_data->endian);
+	mlx_data->fdf = fdf;
 	mlx_data->img = img_data;
 	return (0);
 }

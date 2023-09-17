@@ -6,7 +6,7 @@
 /*   By: fpolaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 12:42:48 by fpolaris          #+#    #+#             */
-/*   Updated: 2023/09/13 11:49:25 by fpolaris         ###   ########.fr       */
+/*   Updated: 2023/09/14 13:23:28 by fpolaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,33 @@ typedef struct s_img_data
 	int		endian;
 }	t_img_data;
 
+typedef struct s_fdf
+{
+	int	sizx;
+	int	sizy;
+	int	area;
+	int	dltx;
+	int	dlty;
+	int	offx;
+	int	offy;
+	int	cntr;
+	float	sclx;
+	float	scly;
+	char	***map;
+}	t_fdf;
+
 typedef struct s_mlx
 {
 	void	*mlx;
 	void	*window;
-	int	max_x;
-	int	max_y;
+	t_fdf	*fdf;
 	t_img_data	*img;
 }	t_mlx;
 
 int	graphics_init(char *title, t_mlx *data);
-void	graphics_end(t_mlx *data);
+int	graphics_end(t_mlx *data);
+
+//	bounded draw
 
 void	draw_pixel(t_mlx *data, int x, int y, int color);
 void	draw_point(t_mlx *data, t_vector vertx, int color);
@@ -57,5 +73,10 @@ void	draw_circle(t_mlx *data, t_vector center, int radius, int color);
 void	draw_butterfly(t_mlx *data, t_vector center);
 void	draw_fill(t_mlx *data, t_vector start, t_vector end, int color);
 void	draw_update(t_mlx *data);
+
+//	bondless draw
+
+void	drac_pixel(t_mlx *data, int x, int y, int color);
+void	drac_line(t_mlx *data, t_vector point_a, t_vector point_b);
 
 #endif
