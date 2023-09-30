@@ -60,6 +60,7 @@ void	draw_circle(t_window *win, t_vector center, int radius, int color);
 void	draw_butterfly(t_window *win, t_vector center);
 void	draw_fill(t_window *win, t_vector start, t_vector end, int color);
 void	draw_update(t_window *win);
+float	perlin_nowl(float x, float y, float freq, int depth);
 
 // bondless draw
 

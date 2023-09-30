@@ -23,6 +23,7 @@ t_window	*win_open(char *title, int width, int height)
 
 int	win_close_sequence(int keycode, void *window)
 {
+	fp_printf("key pressed\n");
 	if (keycode == KEY_ESC)
 	{
 		fp_printf("exit(1): esc key pressed\n");
