@@ -10,7 +10,7 @@
 ## DESCRIPTION  
 
 This repository is my first graphical exploration; created as the repository for the *fdf* project of the 42 curriculun, you can compile and run it and other programs:  
-- fdf;
+- fdf; (on branch fdf)  
     This program will receive one parameter which will be a .fdf file representing a map already parsed such as:  
 
     1 2 3 4 5   
@@ -20,7 +20,8 @@ This repository is my first graphical exploration; created as the repository for
     0 0 0 0 1  
 
     The program will project the map in a isometric view, taking its *x* and *y* position from its lireal positions on the grid, and its *z* postion based on the number described; aditionally, each position on the map can specify a color in the format "1,0xFFFFFF", if no color is specified, white will be used as a default; colors are lerped between points on the map.  
-    test maps can be found on 'utils/maps', or created manually, note that a valid map has the same ammount of collumns and rows.  
+    there are test maps available for test, or they can be created manually, note that a valid map has the same ammount of collumns and rows.  
+    note: fdf utilized legacy functions so it can only be conpiled and run on the 'fdf' branch.  
 
 - Conway;  
     This program will receive three parameters: [screen width] [screen height] [starting cells]; utilizing the minilibx, the program will open a screen and project on the screen [starting cells] pixels on random positions, then, start to update the screen seeing each pixel as a cell to behave according to Conway's Game of Life rules.  

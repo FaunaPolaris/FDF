@@ -15,14 +15,12 @@ SRCS_MTX	=	new.c identity.c from_vec.c rotate.c
 SRCS_MTX	+=	multiply.c fill.c print.c
 SRCS_MTX	+=	null.c nullv.c init.c
 SRCS_VEC	=	from_mtx.c new.c center.c isometry.c
-SRCS_FDF	=	create_map.c draw_map.c
 
 SRCS_ALL	=	$(addprefix graphics/,$(SRCS_GRAPH))
 SRCS_ALL	+=	$(addprefix graphics/perlin_,$(SRCS_PERLIN))
 SRCS_ALL	+=	$(addprefix graphics/draw_,$(SRCS_DRAW))
 SRCS_ALL	+=	$(addprefix matrix/mtx_,$(SRCS_MTX))
 SRCS_ALL	+=	$(addprefix matrix/vec_,$(SRCS_VEC))
-SRCS_all	+=	$(addprefix programs/fdf/fdf_, $(SRCS_FDF))
 
 ANSI		=	\033[0
 BOLD		=	;1
@@ -33,9 +31,8 @@ CYAN		=	;36
 CON_MAIN	=	programs/conway.c
 PERLIN_MAIN	=	programs/perlin.c
 BUTTER_MAIN	=	programs/butterfly.c
-FDF_MAIN	=	programs/fdf/main.c
 
-all: libft conway perlin butterfly fdf
+all: libft conway perlin butterfly
 
 conway:
 	@$(CC) $(C_FLAGS) $(HEADER) $(CON_MAIN) -o $@ $(SRCS_ALL) $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
@@ -48,10 +45,6 @@ perlin:
 butterfly:
 	@$(CC) $(C_FLAGS) $(HEADER) $(BUTTER_MAIN) -o $@ $(SRCS_ALL) $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
 	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "formula" "Compiled"
-
-fdf:
-	@$(CC) $(C_FLAGS) $(HEADER) $(FDF_MAIN) -o $@ $(SRCS_ALL) $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
-	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "fdf" "Compiled"
 
 libft: 
 	@make -C $(LIBFT)
@@ -71,4 +64,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all libft clean fclean re 
+.PHONY: all libft conway perlin butterfly clean fclean re 

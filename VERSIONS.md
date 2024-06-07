@@ -1,5 +1,7 @@
 # Version history 
 
+- 1.0.0 (closed);  
+    - final version fo the repository;  
 - 0.5.1 (perlin noise);  
 	- new functions:  
 		- perlin_nowl;  
