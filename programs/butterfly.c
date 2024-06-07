@@ -3,14 +3,12 @@
 void		*g_mlx;
 t_constants	*g_mtx;
 
-int	main(int argc, char **argv)
+int	main(void)
 {
 	t_window	*win;
 
 	g_mlx = mlx_init();
 	g_mtx = mtx_init();
-	if (argc != 2)
-		return (1);
 	win = win_open("Formula Projection", 1320, 720);
 	draw_butterfly(win, vec_center());
 	mlx_destroy_display(g_mlx);
