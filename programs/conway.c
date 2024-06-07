@@ -101,7 +101,6 @@ static int	st_verify(t_wireframe cell)
 		output++;
 	if (cell.ymins->color == WHITE)
 		output++;
-	/*
 	if (cell.ymins->xmins->color == WHITE)
 		output++;
 	if (cell.ymins->xplus->color == WHITE)
@@ -110,7 +109,6 @@ static int	st_verify(t_wireframe cell)
 		output++;
 	if (cell.yplus->xmins->color == WHITE)
 		output++;
-		*/
 	return (output);
 
 }

@@ -1,4 +1,4 @@
-NAME		=	conway
+NAME		=	graphics
 CC		=	gcc
 C_FLAGS		=	-Wall -Wextra -Werror -g3
 HEADER		=	-I./include/
@@ -30,28 +30,32 @@ CYAN		=	;36
 
 CON_MAIN	=	programs/conway.c
 PERLIN_MAIN	=	programs/perlin.c
+BUTTER_MAIN	=	programs/butterfly.c
 
-all: libft $(NAME)
+all: libft conway perlin formula
 
-$(NAME):
-	@$(CC) $(C_FLAGS) $(HEADER) $(CON_MAIN) -o $(NAME) $(SRCS_ALL) $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
+conway:
+	@$(CC) $(C_FLAGS) $(HEADER) $(CON_MAIN) -o $@ $(SRCS_ALL) $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
 	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "conway" "Compiled"
 
 perlin:
 	@$(CC) $(C_FLAGS) $(HEADER) $(PERLIN_MAIN) -o $@ $(SRCS_ALL) $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
 	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "perlin" "Compiled"
 
+butterfly:
+	@$(CC) $(C_FLAGS) $(HEADER) $(BUTTER_MAIN) -o $@ $(SRCS_ALL) $(MLX_LINK) $(MATH_LINK) $(LIBFT_LINK)
+	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "formula" "Compiled"
+
 libft: 
 	@make -C $(LIBFT)
 
 clean:
-	@rm -rf *.o
-	@rm -rf $(NAME)
 	@rm -rf perlin
-	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "Objects" "Cleaned"
+	@rm -rf butterfly
+	@rm -rf conway
 	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "Executables" "Cleaned"
 
-fclean: clean clean_tests
+fclean: clean
 	@make -C $(LIBFT) fclean
 	@printf "%-30s$(ANSI)$(YELLOW)$(BOLD)m%s;$(ANSI)m\n" "libraries" "Cleaned"
 	@echo
